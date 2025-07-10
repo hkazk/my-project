@@ -1,5 +1,4 @@
-
-/* === GLOBAL RESET AND SCALING FIX === */
+/* === GLOBAL RESET AND PROPER SCALING === */
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -31,7 +30,7 @@ html {
   justify-content: center;
   background-color: #000000;
   color: white;
-  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo */
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
 }
 
 /* Loading Overlay */
@@ -47,21 +46,21 @@ html {
   justify-content: center;
   background-color: #000000;
   color: white;
-  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo */
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   z-index: 50;
 }
 
 .loading-spinner {
-  width: 80px;
-  height: 80px;
-  border: 5px solid rgba(255, 255, 255, 0.3);
-  border-top: 5px solid #4A90E2;
+  width: clamp(50px, 6vw, 80px);
+  height: clamp(50px, 6vw, 80px);
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #4A90E2;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 30px;
+  margin-bottom: clamp(15px, 3vw, 30px);
 }
 
-/* Globe Container - Full width with panels as overlays */
+/* Globe Container */
 .globe-container {
   width: 100%;
   height: 100%;
@@ -79,7 +78,7 @@ html {
   display: none;
 }
 
-/* Redesigned Center Instructions - Following navbar standards */
+/* Center Instructions - Properly Responsive */
 .center-instructions {
   position: absolute;
   top: 50%;
@@ -88,18 +87,19 @@ html {
   text-align: center;
   z-index: 20;
   pointer-events: none;
+  max-width: 90vw;
 }
 
 .explore-badge {
   display: inline-block;
   background: linear-gradient(135deg, rgba(74, 144, 226, 0.9), rgba(156, 89, 182, 0.9));
   color: white;
-  padding: 0.8rem 1.6rem; /* Same as navbar links */
-  border-radius: 25px;
-  font-size: 1.2rem; /* Same as navbar info items */
+  padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1rem, 2.5vw, 1.8rem);
+  border-radius: clamp(15px, 3vw, 25px);
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
   font-weight: 600;
-  letter-spacing: 1.5px;
-  margin-bottom: 1.5rem;
+  letter-spacing: clamp(0.5px, 0.2vw, 1.5px);
+  margin-bottom: clamp(1rem, 2vw, 1.8rem);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
@@ -107,11 +107,11 @@ html {
 }
 
 .main-title {
-  font-size: clamp(2.5rem, 6vw, 4.2rem); /* Larger than navbar logo for hero impact */
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 200;
   color: white;
-  margin-bottom: 1rem;
-  letter-spacing: 3px;
+  margin-bottom: clamp(0.8rem, 2vw, 1.5rem);
+  letter-spacing: clamp(1px, 0.4vw, 3px);
   line-height: 1.1;
   animation: fadeInUp 0.8s ease 0.7s both;
   text-shadow: 0 2px 10px rgba(74, 144, 226, 0.5);
@@ -119,37 +119,38 @@ html {
 
 .title-accent {
   display: block;
-  font-size: clamp(2rem, 5vw, 3.2rem); /* Proportional to main title */
+  font-size: clamp(1.8rem, 4.5vw, 3.8rem);
   background: linear-gradient(135deg, #74b9ff, #81ecec);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 300;
-  letter-spacing: 2px;
-  margin-top: 0.5rem;
+  letter-spacing: clamp(1px, 0.3vw, 2px);
+  margin-top: clamp(0.3rem, 1vw, 0.8rem);
 }
 
 .instruction-text {
-  font-size: 1.4rem; /* Same as navbar links */
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
-  letter-spacing: 1px;
+  letter-spacing: clamp(0.3px, 0.1vw, 1px);
   animation: fadeInUp 0.8s ease 0.9s both;
 }
 
-/* Floating Info Panel - Standard font sizes */
+/* Floating Info Panel - Responsive Width and Positioning */
 .floating-info-panel {
   position: absolute;
-  top: 5rem;
-  left: 1rem;
+  top: clamp(3rem, 8vh, 6rem);
+  left: clamp(0.5rem, 2vw, 2rem);
   background: none;
   backdrop-filter: none;
   border-radius: 0;
-  padding: 1rem;
+  padding: clamp(0.8rem, 2vw, 1.5rem);
   border: none;
   box-shadow: none;
   color: white;
-  width: 20%; /* Increased width for larger text */
+  width: clamp(280px, 25vw, 400px);
+  max-width: 25vw;
   z-index: 15;
   animation: slideInLeft 0.8s ease;
   pointer-events: none;
@@ -162,19 +163,19 @@ html {
 .info-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
+  margin-bottom: clamp(1rem, 2vw, 1.8rem);
+  padding-bottom: clamp(0.6rem, 1.5vw, 1rem);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .location-icon {
-  font-size: clamp(1.4rem, 4vw, 2rem); /* Same as navbar logo icon */
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
 }
 
 .location-name {
   margin: 0;
-  font-size: clamp(1.2rem, 4vw, 1.8rem); /* Large header - between navbar logo and links */
+  font-size: clamp(1.2rem, 2.8vw, 2rem);
   font-weight: 300;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -182,37 +183,37 @@ html {
 
 .location-subtitle {
   margin: 0;
-  font-size: 1.2rem; /* Same as navbar info items */
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
   color: rgba(255, 255, 255, 0.7);
 }
 
 .time-section {
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 2vw, 1.8rem);
   text-align: center;
-  padding: 1.5rem;
+  padding: clamp(1rem, 2.5vw, 1.8rem);
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  border-radius: clamp(8px, 1.5vw, 12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .current-time {
-  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo for prominence */
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
   font-weight: 200;
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.3rem, 1vw, 0.6rem);
   color: #4A90E2;
   text-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);
 }
 
 .current-date {
-  font-size: 1.2rem; /* Same as navbar info items */
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
   color: rgba(255, 255, 255, 0.8);
 }
 
 .weather-section {
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  padding: clamp(1rem, 2.5vw, 1.8rem);
+  margin-bottom: clamp(1rem, 2vw, 1.8rem);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -220,79 +221,79 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.6rem, 1.5vw, 1.2rem);
 }
 
 .weather-left {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.6rem, 1.5vw, 1.2rem);
 }
 
 .weather-icon {
-  font-size: 2.5rem; /* Large icon for visual impact */
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
 }
 
 .weather-temp {
-  font-size: clamp(1.2rem, 4vw, 1.8rem); /* Large temperature display */
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
   font-weight: 500;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .weather-condition {
-  font-size: 1.1rem; /* Readable condition text */
+  font-size: clamp(0.8rem, 1.6vw, 1.2rem);
   color: rgba(255, 255, 255, 0.7);
 }
 
 .weather-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  font-size: 1.1rem; /* Increased for readability */
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+  font-size: clamp(0.8rem, 1.6vw, 1.2rem);
   color: rgba(255, 255, 255, 0.7);
 }
 
 .weather-stat {
-  padding: 0.5rem;
+  padding: clamp(0.3rem, 1vw, 0.6rem);
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  border-radius: clamp(4px, 1vw, 8px);
   text-align: center;
 }
 
-/* Featured Experience - Standard sizing */
+/* Featured Experience */
 .featured-experience {
   background: rgba(74, 144, 226, 0.12);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  padding: clamp(1rem, 2.5vw, 1.8rem);
   border: 1px solid rgba(74, 144, 226, 0.25);
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 2vw, 1.8rem);
 }
 
 .featured-label {
-  font-size: 1.1rem; /* Readable label size */
+  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
   color: #4A90E2;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.8rem;
+  letter-spacing: clamp(0.5px, 0.1vw, 1px);
+  margin-bottom: clamp(0.5rem, 1.2vw, 0.9rem);
   font-weight: 600;
 }
 
 .featured-title {
-  font-size: 1.6rem; /* Section heading size */
+  font-size: clamp(1.1rem, 2.2vw, 1.7rem);
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.3rem, 0.8vw, 0.6rem);
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .featured-description {
-  font-size: 1.1rem; /* Standard body text */
+  font-size: clamp(0.85rem, 1.7vw, 1.2rem);
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
 }
 
-/* News & Offers Section - Standard sizing */
+/* News & Offers Section */
 .news-offers-section {
   margin-top: 0;
   padding-top: 0;
@@ -300,11 +301,11 @@ html {
 }
 
 .section-label {
-  font-size: 1.2rem; /* Same as navbar info items */
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
   color: #4A90E2;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
+  letter-spacing: clamp(0.5px, 0.1vw, 1px);
+  margin-bottom: clamp(0.6rem, 1.5vw, 1.2rem);
   font-weight: 600;
   text-align: center;
 }
@@ -312,28 +313,28 @@ html {
 .news-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 1.2rem;
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+  margin-bottom: clamp(0.6rem, 1.5vw, 1rem);
+  padding: clamp(0.8rem, 2vw, 1.4rem);
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
+  border-radius: clamp(8px, 1.5vw, 12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .news-item:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .news-badge {
   background: linear-gradient(135deg, #4A90E2, #6C5CE7);
   color: white;
-  font-size: 0.9rem; /* Readable badge text */
-  padding: 0.4rem 0.8rem;
-  border-radius: 10px;
+  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
+  padding: clamp(0.2rem, 0.8vw, 0.4rem) clamp(0.4rem, 1.2vw, 0.8rem);
+  border-radius: clamp(6px, 1.2vw, 10px);
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: clamp(0.2px, 0.1vw, 0.5px);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -348,16 +349,16 @@ html {
 }
 
 .news-title {
-  font-size: 1.3rem; /* Readable news title */
+  font-size: clamp(0.95rem, 2vw, 1.4rem);
   font-weight: 500;
   color: white;
-  margin-bottom: 0.3rem;
+  margin-bottom: clamp(0.1rem, 0.5vw, 0.3rem);
   line-height: 1.3;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .news-description {
-  font-size: 1rem; /* Standard body text */
+  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.4;
   overflow: hidden;
@@ -371,12 +372,13 @@ html {
   display: none;
 }
 
-/* Options Panel - ENHANCED HOVER EFFECTS */
+/* Options Panel - Responsive Right Side */
 .options-panel {
   position: absolute;
   top: 0;
   right: 0;
-  width: 20%; /* Increased width for larger text */
+  width: clamp(280px, 25vw, 400px);
+  max-width: 25vw;
   height: 100%;
   background: none;
   backdrop-filter: none;
@@ -386,9 +388,9 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: clamp(1.5rem, 3vw, 3rem);
   z-index: 15;
-  padding: 2rem;
+  padding: clamp(1rem, 2.5vw, 2.5rem);
   pointer-events: none;
 }
 
@@ -398,35 +400,34 @@ html {
 
 .options-title {
   color: #ffffff;
-  font-size: 2.5rem; /* Large section title */
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
   font-weight: 300;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.6rem, 1.5vw, 1.2rem);
   text-align: center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  letter-spacing: 1px;
+  letter-spacing: clamp(0.5px, 0.2vw, 1px);
 }
 
 .options-list {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
   align-items: center;
   width: 100%;
 }
 
-/* ENHANCED Option Items - All buttons look the same by default */
+/* Option Items - Properly Responsive */
 .option-item {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: clamp(0.8rem, 1.8vw, 1.4rem);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 25px;
-  padding: 1.2rem 2rem;
+  border-radius: clamp(15px, 2.5vw, 25px);
+  padding: clamp(0.8rem, 2vw, 1.4rem) clamp(1.2rem, 2.5vw, 2rem);
   width: 100%;
   justify-content: flex-start;
   animation: fadeInDot 0.6s ease both;
-  /* Consistent subtle background for ALL buttons */
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: none;
@@ -434,7 +435,6 @@ html {
   overflow: hidden;
 }
 
-/* Shimmer effect */
 .option-item::before {
   content: '';
   position: absolute;
@@ -451,37 +451,33 @@ html {
 }
 
 .option-item:hover {
-  transform: scale(1.08) translateY(-6px);
+  transform: scale(1.05) translateY(-3px);
   background: rgba(74, 144, 226, 0.15);
   border: 2px solid rgba(74, 144, 226, 0.4);
   box-shadow: 
-    0 20px 40px rgba(74, 144, 226, 0.3),
-    0 8px 20px rgba(74, 144, 226, 0.2);
+    0 15px 35px rgba(74, 144, 226, 0.25),
+    0 6px 18px rgba(74, 144, 226, 0.15);
 }
 
-/* Large buttons - only different padding and stronger hover effect */
 .option-large {
-  padding: 1.4rem 2.2rem; /* Slightly larger padding */
-  /* Same base styling as regular buttons */
+  padding: clamp(0.9rem, 2.2vw, 1.6rem) clamp(1.4rem, 2.8vw, 2.2rem);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: none;
 }
 
 .option-large:hover {
-  transform: scale(1.1) translateY(-8px); /* Slightly more dramatic hover */
+  transform: scale(1.07) translateY(-4px);
   background: rgba(74, 144, 226, 0.18);
   border: 2px solid rgba(74, 144, 226, 0.5);
   box-shadow: 
-    0 25px 50px rgba(74, 144, 226, 0.4),
-    0 10px 25px rgba(74, 144, 226, 0.3);
+    0 20px 40px rgba(74, 144, 226, 0.3),
+    0 8px 22px rgba(74, 144, 226, 0.2);
 }
 
-/* Small buttons - same base styling, just different hover intensity */
 .option-small {
-  padding: 1.2rem 2rem; /* Same padding as regular buttons */
-  opacity: 1; /* Remove opacity difference */
-  /* Same base styling as regular buttons */
+  padding: clamp(0.8rem, 2vw, 1.4rem) clamp(1.2rem, 2.5vw, 2rem);
+  opacity: 1;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: none;
@@ -489,17 +485,17 @@ html {
 
 .option-small:hover {
   opacity: 1;
-  transform: scale(1.06) translateY(-4px); /* Slightly less dramatic hover */
+  transform: scale(1.04) translateY(-2px);
   background: rgba(74, 144, 226, 0.12);
   border: 2px solid rgba(74, 144, 226, 0.35);
   box-shadow: 
-    0 15px 35px rgba(74, 144, 226, 0.25),
-    0 6px 15px rgba(74, 144, 226, 0.15);
+    0 12px 28px rgba(74, 144, 226, 0.2),
+    0 5px 14px rgba(74, 144, 226, 0.12);
 }
 
 .option-icon {
-  font-size: clamp(1.4rem, 4vw, 2rem);
-  min-width: 40px;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  min-width: clamp(28px, 5vw, 40px);
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
@@ -509,7 +505,7 @@ html {
 .option-item:hover .option-icon {
   color: #ffffff;
   filter: drop-shadow(0 4px 12px rgba(74, 144, 226, 0.8));
-  transform: scale(1.15) rotate(5deg);
+  transform: scale(1.1) rotate(3deg);
 }
 
 .option-text {
@@ -518,7 +514,7 @@ html {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   flex: 1;
   text-align: left;
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
   line-height: 1.3;
   transition: all 0.4s ease;
@@ -527,14 +523,14 @@ html {
 .option-item:hover .option-text {
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(74, 144, 226, 0.8);
-  transform: translateX(5px);
+  transform: translateX(3px);
 }
 
 .minimize-hint {
   display: none;
 }
 
-/* Modal Overlay - Standard sizing */
+/* Modal Overlay */
 .modal-overlay {
   position: absolute;
   top: 0;
@@ -552,9 +548,10 @@ html {
 .modal-content {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(30px);
-  border-radius: 20px;
-  padding: 3rem;
-  max-width: 600px;
+  border-radius: clamp(12px, 2vw, 20px);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  max-width: clamp(400px, 50vw, 600px);
+  width: 90%;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
@@ -563,9 +560,9 @@ html {
 .contact-modal {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(30px);
-  border-radius: 20px;
-  padding: 3rem;
-  max-width: 500px;
+  border-radius: clamp(12px, 2vw, 20px);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  max-width: clamp(350px, 45vw, 500px);
   width: 90%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
@@ -573,15 +570,15 @@ html {
 
 .close-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: clamp(0.6rem, 1.5vw, 1.2rem);
+  right: clamp(0.6rem, 1.5vw, 1.2rem);
   background: rgba(255, 255, 255, 0.2);
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: clamp(35px, 6vw, 50px);
+  height: clamp(35px, 6vw, 50px);
   color: white;
-  font-size: 1.8rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -594,12 +591,12 @@ html {
   transform: scale(1.1);
 }
 
-/* Contact Form - Standard sizing */
+/* Contact Form */
 .contact-title {
   color: white;
-  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo */
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
   font-weight: 300;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1.2rem, 3vw, 2.2rem);
   text-align: center;
   text-shadow: 0 2px 10px rgba(74, 144, 226, 0.5);
 }
@@ -607,17 +604,17 @@ html {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: clamp(1rem, 2.5vw, 1.8rem);
 }
 
 .form-input,
 .form-textarea {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  padding: 1.2rem; /* Same as navbar link padding */
+  border-radius: clamp(6px, 1vw, 10px);
+  padding: clamp(0.8rem, 2vw, 1.4rem);
   color: white;
-  font-size: 1.2rem; /* Same as navbar info items */
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
   transition: all 0.3s ease;
 }
 
@@ -641,15 +638,15 @@ html {
   background: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%);
   color: white;
   border: none;
-  padding: 1.2rem 2rem; /* Same as navbar links */
-  border-radius: 20px; /* Same as navbar buttons */
-  font-size: 1.4rem; /* Same as navbar links */
+  padding: clamp(0.8rem, 2vw, 1.4rem) clamp(1.2rem, 3vw, 2.2rem);
+  border-radius: clamp(12px, 2vw, 20px);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1rem;
+  margin-top: clamp(0.6rem, 1.5vw, 1.2rem);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: clamp(0.5px, 0.1vw, 1px);
 }
 
 .submit-button:hover {
@@ -702,205 +699,160 @@ html {
   }
 }
 
-/* Responsive Design - Following navbar patterns */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
   .options-panel {
     width: 100%;
     bottom: 0;
-    height: 40%; /* Increased height for larger text */
+    height: 45vh;
     top: auto;
     right: 0;
+    max-width: none;
     background: linear-gradient(135deg, rgba(15, 15, 25, 0.95) 0%, rgba(5, 5, 15, 0.98) 100%);
     backdrop-filter: blur(30px);
     border-top: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    gap: 2rem;
+    padding: clamp(1.2rem, 4vw, 2rem);
+    gap: clamp(1rem, 3vw, 2rem);
   }
 
   .floating-info-panel {
     width: calc(100% - 2rem);
+    max-width: none;
     left: 1rem;
     right: 1rem;
     top: 1rem;
-    height: 35%;
+    height: 40vh;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(15, 15, 25, 0.9) 100%);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     border-radius: 15px;
-    padding: 1.5rem;
+    padding: clamp(1rem, 3vw, 1.8rem);
     overflow-y: auto;
   }
 
   .globe-container {
     width: 100%;
-    height: 25%; /* Reduced space but still visible */
+    height: 15vh;
     left: 0;
-    top: 35%;
+    top: 40vh;
   }
 
   .center-instructions {
-    top: 47.5%;
-  }
-  
-  /* Mobile scaling - proportional to navbar mobile scaling */
-  .location-name {
-    font-size: 1.6rem; /* Proportional scaling */
-  }
-  
-  .current-time {
-    font-size: clamp(1.4rem, 4vw, 2rem); /* Proportional scaling */
-  }
-  
-  .weather-temp {
-    font-size: 1.6rem; /* Proportional scaling */
-  }
-  
-  .news-title {
-    font-size: 1.1rem; /* Proportional scaling */
-  }
-  
-  .news-description {
-    font-size: 0.9rem; /* Proportional scaling */
-  }
-  
-  .featured-title {
-    font-size: 1.3rem; /* Proportional scaling */
-  }
-  
-  .featured-description {
-    font-size: 1rem; /* Keep readable */
-  }
-  
-  .section-label {
-    font-size: 1.1rem; /* Proportional scaling */
+    top: 47.5vh;
   }
 
-  .center-instructions .main-title {
-    font-size: 3.2rem; /* Proportional to navbar mobile scaling */
-  }
-
-  .center-instructions .title-accent {
-    font-size: clamp(1.8rem, 5vw, 2.4rem); /* Proportional scaling */
-  }
-
-  .center-instructions .instruction-text {
-    font-size: 1.2rem; /* Same as navbar mobile links */
-  }
-
-  .options-title {
-    font-size: clamp(1.4rem, 4vw, 2rem); /* Proportional scaling */
-  }
-
-  .option-text {
-    font-size: 1.2rem; /* Same as navbar mobile links */
-  }
-
-  .option-icon {
-    font-size: 1.8rem; /* Proportional scaling */
-  }
-
-  .contact-title {
-    font-size: clamp(1.4rem, 4vw, 2rem); /* Proportional scaling */
-  }
-
-  .form-input,
-  .form-textarea {
-    font-size: 1.1rem; /* Slightly smaller but readable */
-  }
-
-  .submit-button {
-    font-size: 1.2rem; /* Same as navbar mobile links */
-  }
-
-  /* Enhanced mobile hover effects */
-  .option-item:hover {
-    transform: scale(1.05) translateY(-3px);
-  }
-
-  .option-large:hover {
-    transform: scale(1.07) translateY(-5px);
-  }
-
-  .option-small:hover {
-    transform: scale(1.03) translateY(-2px);
-  }
-}
-
-@media (max-width: 480px) {
-  .floating-info-panel {
-    padding: 1.5rem;
-    min-width: auto;
-  }
-
-  /* Further mobile scaling */
-  .location-name {
-    font-size: 1.4rem; /* Still readable */
-  }
-
-  .current-time {
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Still prominent */
-  }
-
-  .weather-temp {
-    font-size: 1.4rem; /* Still readable */
-  }
-
-  .news-title {
-    font-size: 1rem; /* Still readable */
-  }
-
-  .news-description {
-    font-size: 0.85rem; /* Minimum readable size */
-  }
-
-  .option-item {
-    padding: 1.2rem 1.5rem; /* Adjusted for smaller screens */
-  }
-
-  .option-text {
-    font-size: 1.1rem; /* Same as navbar small mobile */
-  }
-
-  .options-title {
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Same as navbar small mobile logo */
-  }
-
-  .main-title {
-    font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar small mobile logo */
-  }
-
-  .title-accent {
-    font-size: 2.4rem; /* Proportional */
-  }
-
-  .instruction-text {
-    font-size: 1.1rem; /* Same as navbar small mobile */
-  }
-
-  .contact-title {
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Same as navbar small mobile logo */
-  }
-
-  .form-input,
-  .form-textarea {
-    font-size: 1rem; /* Standard readable size */
-  }
-
-  .submit-button {
-    font-size: 1.1rem; /* Same as navbar small mobile */
-  }
-
-  /* Reduced hover effects for small screens */
+  /* Reduce hover effects on mobile */
   .option-item:hover {
     transform: scale(1.02) translateY(-1px);
   }
 
   .option-large:hover {
-    transform: scale(1.04) translateY(-2px);
+    transform: scale(1.03) translateY(-2px);
   }
 
   .option-small:hover {
     transform: scale(1.01) translateY(-1px);
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-info-panel {
+    padding: clamp(0.8rem, 3vw, 1.5rem);
+    height: 35vh;
+  }
+
+  .options-panel {
+    height: 50vh;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    gap: clamp(0.8rem, 2vw, 1.5rem);
+  }
+
+  .globe-container {
+    height: 15vh;
+    top: 35vh;
+  }
+
+  .center-instructions {
+    top: 42.5vh;
+  }
+
+  /* Further reduced hover effects for small screens */
+  .option-item:hover {
+    transform: scale(1.01) translateY(-0.5px);
+  }
+
+  .option-large:hover {
+    transform: scale(1.02) translateY(-1px);
+  }
+
+  .option-small:hover {
+    transform: scale(1.005) translateY(-0.5px);
+  }
+
+  /* Ensure text remains readable on small screens */
+  .main-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .title-accent {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  .instruction-text {
+    font-size: clamp(0.9rem, 3vw, 1.3rem);
+  }
+
+  .options-title {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+  }
+
+  .option-text {
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  }
+}
+
+/* Large screens optimization */
+@media (min-width: 1400px) {
+  .floating-info-panel {
+    width: 350px;
+    max-width: 20vw;
+  }
+
+  .options-panel {
+    width: 350px;
+    max-width: 20vw;
+  }
+
+  /* Ensure content doesn't get too large on very big screens */
+  .main-title {
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+  }
+
+  .title-accent {
+    font-size: clamp(1.8rem, 3vw, 3.2rem);
+  }
+
+  .current-time {
+    font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  }
+
+  .location-name {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+  }
+
+  .option-text {
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1920px) {
+  .floating-info-panel {
+    left: clamp(2rem, 5vw, 4rem);
+  }
+
+  .options-panel {
+    right: clamp(2rem, 5vw, 4rem);
   }
 }

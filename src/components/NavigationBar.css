@@ -1,8 +1,20 @@
+/* === AGGRESSIVE SCALING FOR ALL ENVIRONMENTS === */
+html {
+  font-size: 12px !important; /* Force smaller base font */
+}
+
+/* Force smaller sizes specifically for production environments */
+@media screen and (min-resolution: 1dppx) {
+  html {
+    font-size: 10px !important;
+  }
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1rem, 3vw, 2rem); /* Smaller padding */
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(15, 15, 25, 0.95) 50%, rgba(0, 0, 0, 0.9) 100%);
   backdrop-filter: blur(25px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 
@@ -42,22 +54,361 @@
 }
 
 .navbar-logo {
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem); /* Responsive logo size */
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem) !important; /* Much smaller logo */
   font-weight: 300;
   color: #ffffff;
   text-shadow: 0 2px 10px rgba(74, 144, 226, 0.5),
                0 0 20px rgba(255, 255, 255, 0.2);
-  letter-spacing: clamp(0.5px, 0.2vw, 1px);
+  letter-spacing: clamp(0.3px, 0.1vw, 0.8px);
   transition: all 0.3s ease;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: clamp(0.3rem, 1vw, 0.6rem);
+  gap: clamp(0.2rem, 0.6vw, 0.4rem);
 }
 
 .logo-icon {
-  font-size: clamp(1.4rem, 2.8vw, 2rem); /* Responsive icon size */
+  font-size: clamp(1rem, 2vw, 1.4rem) !important; /* Much smaller icon */
   filter: drop-shadow(0 2px 4px rgba(74, 144, 226, 0.6));
+}
+
+.navbar-logo:hover {
+  color: #ffffff;
+  text-shadow: 0 2px 15px rgba(74, 144, 226, 0.8),
+               0 0 30px rgba(255, 255, 255, 0.4);
+  transform: scale(1.02);
+}
+
+.navbar-logo:hover .logo-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 6px rgba(74, 144, 226, 0.8));
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: clamp(0.6rem, 1.8vw, 1.5rem); /* Smaller gaps */
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  font-size: clamp(0.7rem, 1.4vw, 1rem) !important; /* Much smaller font */
+  padding: clamp(0.4rem, 1vw, 0.7rem) clamp(0.6rem, 1.8vw, 1.2rem); /* Smaller padding */
+  border-radius: clamp(8px, 1.8vw, 15px);
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid transparent;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(156, 89, 182, 0.05) 100%);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.navbar-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(156, 89, 182, 0.15) 100%);
+  border-radius: clamp(8px, 1.8vw, 15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.navbar-links a:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+  border: 1px solid rgba(74, 144, 226, 0.4);
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3),
+              0 0 20px rgba(74, 144, 226, 0.2);
+  text-shadow: 0 2px 8px rgba(74, 144, 226, 0.6),
+               0 1px 3px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(156, 89, 182, 0.1) 100%);
+}
+
+.navbar-links a:hover::before {
+  opacity: 1;
+}
+
+/* Info items - much smaller */
+.navbar-info {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important; /* Much smaller info font */
+  padding: clamp(0.4rem, 1vw, 0.7rem) clamp(0.5rem, 1.5vw, 1rem); /* Smaller padding */
+  border-radius: clamp(8px, 1.8vw, 15px);
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(74, 144, 226, 0.1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.03) 0%, rgba(156, 89, 182, 0.03) 100%);
+  cursor: default;
+  text-transform: uppercase;
+  letter-spacing: clamp(0.2px, 0.05vw, 0.3px);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.navbar-info:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.06) 0%, rgba(156, 89, 182, 0.06) 100%);
+  border: 1px solid rgba(74, 144, 226, 0.2);
+  text-shadow: 0 1px 5px rgba(74, 144, 226, 0.4);
+}
+
+/* Special styling for Live Cam link */
+.navbar-info-link {
+  cursor: pointer !important;
+  text-decoration: none;
+}
+
+.navbar-info-link:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.12) 0%, rgba(156, 89, 182, 0.12) 100%);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  text-shadow: 0 1px 8px rgba(74, 144, 226, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+.navbar-links a.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(156, 89, 182, 0.2) 100%);
+  border: 1px solid rgba(74, 144, 226, 0.5);
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.4);
+  text-shadow: 0 2px 8px rgba(74, 144, 226, 0.7);
+}
+
+.navbar-links a.active::before {
+  opacity: 1;
+}
+
+/* Language Toggle Button Integration */
+.navbar-links li:last-child {
+  margin-left: clamp(0.2rem, 0.6vw, 0.5rem);
+}
+
+/* Special styling for SpinningGlobe page */
+.spinning-globe-page .navbar {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(15, 15, 25, 0.7) 50%, rgba(0, 0, 0, 0.6) 100%);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(74, 144, 226, 0.15);
+}
+
+.spinning-globe-page .navbar-links a {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.08) 0%, rgba(156, 89, 182, 0.08) 100%);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.spinning-globe-page .navbar-links a:hover {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.15) 0%, rgba(156, 89, 182, 0.15) 100%);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+/* Tablet Responsive Design */
+@media (max-width: 1024px) {
+  html {
+    font-size: 9px !important;
+  }
+
+  .navbar {
+    padding: clamp(0.5rem, 1.5vw, 0.9rem) clamp(0.8rem, 2.5vw, 1.5rem);
+  }
+
+  .navbar-links {
+    gap: clamp(0.4rem, 1.5vw, 1rem);
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  html {
+    font-size: 8px !important;
+  }
+
+  .navbar {
+    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(0.6rem, 2.5vw, 1.2rem);
+  }
+
+  .navbar-logo {
+    font-size: clamp(1rem, 3vw, 1.4rem) !important;
+  }
+
+  .logo-icon {
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem) !important;
+  }
+
+  .navbar-links {
+    gap: clamp(0.3rem, 1.5vw, 0.8rem);
+  }
+
+  .navbar-links a {
+    font-size: clamp(0.6rem, 2vw, 0.8rem) !important;
+    padding: clamp(0.3rem, 1.2vw, 0.6rem) clamp(0.4rem, 1.5vw, 0.8rem);
+  }
+
+  .navbar-info {
+    font-size: clamp(0.5rem, 1.6vw, 0.7rem) !important;
+    padding: clamp(0.3rem, 1.2vw, 0.6rem) clamp(0.4rem, 1.4vw, 0.7rem);
+  }
+
+  /* Reduce hover effects on mobile */
+  .navbar-links a:hover {
+    transform: translateY(-0.5px);
+  }
+
+  .navbar-info-link:hover {
+    transform: translateY(-0.5px);
+  }
+}
+
+/* Small Mobile Design */
+@media (max-width: 480px) {
+  html {
+    font-size: 7px !important;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: clamp(0.4rem, 1.5vw, 0.8rem);
+    padding: clamp(0.5rem, 1.5vw, 0.8rem);
+  }
+
+  .navbar-logo {
+    font-size: clamp(0.9rem, 4vw, 1.2rem) !important;
+  }
+
+  .logo-icon {
+    font-size: clamp(0.7rem, 3vw, 1rem) !important;
+  }
+
+  .navbar-links {
+    gap: clamp(0.2rem, 1vw, 0.5rem);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar-links a {
+    padding: clamp(0.3rem, 1.2vw, 0.5rem) clamp(0.4rem, 1.5vw, 0.7rem);
+    font-size: clamp(0.55rem, 2vw, 0.75rem) !important;
+    min-width: clamp(45px, 12vw, 60px);
+    text-align: center;
+  }
+
+  .navbar-info {
+    font-size: clamp(0.45rem, 1.8vw, 0.65rem) !important;
+    padding: clamp(0.3rem, 1.2vw, 0.5rem) clamp(0.3rem, 1.4vw, 0.6rem);
+  }
+
+  /* Language toggle adjustments for mobile */
+  .navbar-links li:last-child {
+    margin-left: 0;
+    margin-top: clamp(0.2rem, 0.8vw, 0.4rem);
+  }
+
+  /* Minimal hover effects for small screens */
+  .navbar-links a:hover {
+    transform: none;
+  }
+
+  .navbar-info-link:hover {
+    transform: none;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 360px) {
+  html {
+    font-size: 6px !important;
+  }
+
+  .navbar {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .navbar-links a {
+    font-size: 0.55rem !important;
+    padding: 0.3rem 0.4rem;
+    min-width: 45px;
+  }
+
+  .navbar-info {
+    font-size: 0.45rem !important;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .navbar-logo {
+    font-size: 0.9rem !important;
+  }
+
+  .logo-icon {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Large Screens Optimization - prevent oversizing */
+@media (min-width: 1400px) {
+  html {
+    font-size: 14px !important; /* Cap the size */
+  }
+
+  .navbar {
+    padding: 0.9rem clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .navbar-logo {
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem) !important;
+  }
+
+  .logo-icon {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem) !important;
+  }
+
+  .navbar-links a {
+    font-size: clamp(0.8rem, 1.3vw, 1.1rem) !important;
+  }
+
+  .navbar-info {
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem) !important;
+  }
+}
+
+/* Ultra-wide Screens - force reasonable maximum sizes */
+@media (min-width: 1920px) {
+  html {
+    font-size: 16px !important; /* Maximum reasonable size */
+  }
+
+  .navbar {
+    padding: 1.1rem clamp(2rem, 5vw, 4rem);
+  }
+
+  /* Prevent elements from getting too large on ultra-wide screens */
+  .navbar-logo {
+    font-size: clamp(1.6rem, 2vw, 2.1rem) !important;
+  }
+
+  .navbar-links a {
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem) !important;
+  }
+
+  .navbar-info {
+    font-size: clamp(0.75rem, 1vw, 1rem) !important;
+  }
 }
 
 .navbar-logo:hover {

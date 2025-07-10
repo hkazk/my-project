@@ -1,3 +1,18 @@
+
+/* === GLOBAL RESET AND SCALING FIX === */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
 /* Main Container */
 .spinning-globe-container {
   position: relative;
@@ -16,7 +31,7 @@
   justify-content: center;
   background-color: #000000;
   color: white;
-  font-size: 2.8rem; /* Same as navbar logo */
+  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo */
 }
 
 /* Loading Overlay */
@@ -32,7 +47,7 @@
   justify-content: center;
   background-color: #000000;
   color: white;
-  font-size: 2.8rem; /* Same as navbar logo */
+  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo */
   z-index: 50;
 }
 
@@ -92,7 +107,7 @@
 }
 
 .main-title {
-  font-size: 4.5rem; /* Larger than navbar logo for hero impact */
+  font-size: clamp(2.5rem, 6vw, 4.2rem); /* Larger than navbar logo for hero impact */
   font-weight: 200;
   color: white;
   margin-bottom: 1rem;
@@ -104,7 +119,7 @@
 
 .title-accent {
   display: block;
-  font-size: 3.5rem; /* Proportional to main title */
+  font-size: clamp(2rem, 5vw, 3.2rem); /* Proportional to main title */
   background: linear-gradient(135deg, #74b9ff, #81ecec);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -154,12 +169,12 @@
 }
 
 .location-icon {
-  font-size: 2.2rem; /* Same as navbar logo icon */
+  font-size: clamp(1.4rem, 4vw, 2rem); /* Same as navbar logo icon */
 }
 
 .location-name {
   margin: 0;
-  font-size: 2rem; /* Large header - between navbar logo and links */
+  font-size: clamp(1.2rem, 4vw, 1.8rem); /* Large header - between navbar logo and links */
   font-weight: 300;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -181,7 +196,7 @@
 }
 
 .current-time {
-  font-size: 2.8rem; /* Same as navbar logo for prominence */
+  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo for prominence */
   font-weight: 200;
   margin-bottom: 0.5rem;
   color: #4A90E2;
@@ -219,7 +234,7 @@
 }
 
 .weather-temp {
-  font-size: 2rem; /* Large temperature display */
+  font-size: clamp(1.2rem, 4vw, 1.8rem); /* Large temperature display */
   font-weight: 500;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -483,7 +498,7 @@
 }
 
 .option-icon {
-  font-size: 2.2rem;
+  font-size: clamp(1.4rem, 4vw, 2rem);
   min-width: 40px;
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
@@ -582,7 +597,7 @@
 /* Contact Form - Standard sizing */
 .contact-title {
   color: white;
-  font-size: 2.8rem; /* Same as navbar logo */
+  font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar logo */
   font-weight: 300;
   margin-bottom: 2rem;
   text-align: center;
@@ -734,7 +749,7 @@
   }
   
   .current-time {
-    font-size: 2.2rem; /* Proportional scaling */
+    font-size: clamp(1.4rem, 4vw, 2rem); /* Proportional scaling */
   }
   
   .weather-temp {
@@ -766,7 +781,7 @@
   }
 
   .center-instructions .title-accent {
-    font-size: 2.8rem; /* Proportional scaling */
+    font-size: clamp(1.8rem, 5vw, 2.4rem); /* Proportional scaling */
   }
 
   .center-instructions .instruction-text {
@@ -774,7 +789,7 @@
   }
 
   .options-title {
-    font-size: 2.2rem; /* Proportional scaling */
+    font-size: clamp(1.4rem, 4vw, 2rem); /* Proportional scaling */
   }
 
   .option-text {
@@ -786,7 +801,7 @@
   }
 
   .contact-title {
-    font-size: 2.2rem; /* Proportional scaling */
+    font-size: clamp(1.4rem, 4vw, 2rem); /* Proportional scaling */
   }
 
   .form-input,
@@ -824,7 +839,7 @@
   }
 
   .current-time {
-    font-size: 2rem; /* Still prominent */
+    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Still prominent */
   }
 
   .weather-temp {
@@ -848,11 +863,11 @@
   }
 
   .options-title {
-    font-size: 2rem; /* Same as navbar small mobile logo */
+    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Same as navbar small mobile logo */
   }
 
   .main-title {
-    font-size: 2.8rem; /* Same as navbar small mobile logo */
+    font-size: clamp(1.8rem, 5vw, 2.4rem); /* Same as navbar small mobile logo */
   }
 
   .title-accent {
@@ -864,7 +879,7 @@
   }
 
   .contact-title {
-    font-size: 2rem; /* Same as navbar small mobile logo */
+    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Same as navbar small mobile logo */
   }
 
   .form-input,

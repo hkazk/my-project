@@ -107,7 +107,7 @@ html {
 }
 
 .main-title {
-  font-size: clamp(1.4rem, 3.5vw, 2.2rem) !important; /* Much smaller */
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem) !important;
   font-weight: 200;
   color: white;
   margin-bottom: clamp(0.5rem, 1.2vw, 0.8rem);
@@ -119,7 +119,7 @@ html {
 
 .title-accent {
   display: block;
-  font-size: clamp(1rem, 2.8vw, 1.7rem) !important; /* Much smaller */
+  font-size: clamp(1rem, 2.8vw, 1.7rem) !important;
   background: linear-gradient(135deg, #74b9ff, #81ecec);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -130,7 +130,7 @@ html {
 }
 
 .instruction-text {
-  font-size: clamp(0.7rem, 1.4vw, 0.9rem) !important; /* Much smaller */
+  font-size: clamp(0.7rem, 1.4vw, 0.9rem) !important;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
   letter-spacing: clamp(0.1px, 0.05vw, 0.3px);
@@ -149,7 +149,7 @@ html {
   border: none;
   box-shadow: none;
   color: white;
-  width: clamp(180px, 15vw, 220px) !important; /* Much narrower */
+  width: clamp(180px, 15vw, 220px) !important;
   max-width: 15vw;
   z-index: 15;
   animation: slideInLeft 0.8s ease;
@@ -170,12 +170,12 @@ html {
 }
 
 .location-icon {
-  font-size: clamp(0.8rem, 1.5vw, 1.1rem) !important; /* Much smaller */
+  font-size: clamp(0.8rem, 1.5vw, 1.1rem) !important;
 }
 
 .location-name {
   margin: 0;
-  font-size: clamp(0.7rem, 1.6vw, 1rem) !important; /* Much smaller */
+  font-size: clamp(0.7rem, 1.6vw, 1rem) !important;
   font-weight: 300;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -183,7 +183,7 @@ html {
 
 .location-subtitle {
   margin: 0;
-  font-size: clamp(0.5rem, 1vw, 0.7rem) !important; /* Much smaller */
+  font-size: clamp(0.5rem, 1vw, 0.7rem) !important;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -197,7 +197,7 @@ html {
 }
 
 .current-time {
-  font-size: clamp(0.9rem, 1.8vw, 1.2rem) !important; /* Much smaller */
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem) !important;
   font-weight: 200;
   margin-bottom: clamp(0.2rem, 0.4vw, 0.3rem);
   color: #4A90E2;
@@ -205,7 +205,7 @@ html {
 }
 
 .current-date {
-  font-size: clamp(0.5rem, 1vw, 0.7rem) !important; /* Much smaller */
+  font-size: clamp(0.5rem, 1vw, 0.7rem) !important;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -231,18 +231,18 @@ html {
 }
 
 .weather-icon {
-  font-size: clamp(1rem, 1.8vw, 1.4rem) !important; /* Much smaller */
+  font-size: clamp(1rem, 1.8vw, 1.4rem) !important;
 }
 
 .weather-temp {
-  font-size: clamp(0.7rem, 1.4vw, 0.9rem) !important; /* Much smaller */
+  font-size: clamp(0.7rem, 1.4vw, 0.9rem) !important;
   font-weight: 500;
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .weather-condition {
-  font-size: clamp(0.5rem, 1vw, 0.7rem) !important; /* Much smaller */
+  font-size: clamp(0.5rem, 1vw, 0.7rem) !important;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -250,7 +250,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(0.3rem, 0.8vw, 0.5rem);
-  font-size: clamp(0.5rem, 1vw, 0.7rem) !important; /* Much smaller */
+  font-size: clamp(0.5rem, 1vw, 0.7rem) !important;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -271,7 +271,7 @@ html {
 }
 
 .featured-label {
-  font-size: clamp(0.45rem, 0.9vw, 0.6rem) !important; /* Much smaller */
+  font-size: clamp(0.45rem, 0.9vw, 0.6rem) !important;
   color: #4A90E2;
   text-transform: uppercase;
   letter-spacing: clamp(0.1px, 0.05vw, 0.3px);
@@ -280,7 +280,7 @@ html {
 }
 
 .featured-title {
-  font-size: clamp(0.7rem, 1.3vw, 0.9rem) !important; /* Much smaller */
+  font-size: clamp(0.7rem, 1.3vw, 0.9rem) !important;
   font-weight: 500;
   margin-bottom: clamp(0.15rem, 0.4vw, 0.25rem);
   color: #ffffff;
@@ -288,7 +288,7 @@ html {
 }
 
 .featured-description {
-  font-size: clamp(0.5rem, 1vw, 0.7rem) !important; /* Much smaller */
+  font-size: clamp(0.5rem, 1vw, 0.7rem) !important;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.3;
 }
@@ -301,7 +301,7 @@ html {
 }
 
 .section-label {
-  font-size: clamp(0.5rem, 1.1vw, 0.7rem) !important; /* Much smaller */
+  font-size: clamp(0.5rem, 1.1vw, 0.7rem) !important;
   color: #4A90E2;
   text-transform: uppercase;
   letter-spacing: clamp(0.1px, 0.05vw, 0.3px);
@@ -330,7 +330,7 @@ html {
 .news-badge {
   background: linear-gradient(135deg, #4A90E2, #6C5CE7);
   color: white;
-  font-size: clamp(0.4rem, 0.8vw, 0.55rem) !important; /* Much smaller */
+  font-size: clamp(0.4rem, 0.8vw, 0.55rem) !important;
   padding: clamp(0.1rem, 0.4vw, 0.2rem) clamp(0.2rem, 0.6vw, 0.35rem);
   border-radius: clamp(3px, 0.6vw, 5px);
   font-weight: 600;
@@ -349,7 +349,7 @@ html {
 }
 
 .news-title {
-  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important; /* Much smaller */
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important;
   font-weight: 500;
   color: white;
   margin-bottom: clamp(0.05rem, 0.3vw, 0.15rem);
@@ -358,7 +358,7 @@ html {
 }
 
 .news-description {
-  font-size: clamp(0.45rem, 0.9vw, 0.6rem) !important; /* Much smaller */
+  font-size: clamp(0.45rem, 0.9vw, 0.6rem) !important;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.2;
   overflow: hidden;
@@ -377,7 +377,7 @@ html {
   position: absolute;
   top: 0;
   right: 0;
-  width: clamp(180px, 15vw, 220px) !important; /* Much narrower */
+  width: clamp(180px, 15vw, 220px) !important;
   max-width: 15vw;
   height: 100%;
   background: none;
@@ -388,7 +388,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.8rem, 1.5vw, 1.2rem); /* Much smaller gaps */
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
   z-index: 15;
   padding: clamp(0.8rem, 1.5vw, 1.2rem);
   pointer-events: none;
@@ -400,7 +400,7 @@ html {
 
 .options-title {
   color: #ffffff;
-  font-size: clamp(0.9rem, 1.8vw, 1.3rem) !important; /* Much smaller */
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem) !important;
   font-weight: 300;
   margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
   text-align: center;
@@ -411,7 +411,7 @@ html {
 .options-list {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.6rem, 1.2vw, 0.9rem); /* Much smaller gaps */
+  gap: clamp(0.6rem, 1.2vw, 0.9rem);
   align-items: center;
   width: 100%;
 }
@@ -451,11 +451,11 @@ html {
 }
 
 .option-item:hover {
-  transform: scale(1.02) translateY(-1px); /* Much smaller hover */
+  transform: scale(1.02) translateY(-1px);
   background: rgba(74, 144, 226, 0.15);
   border: 2px solid rgba(74, 144, 226, 0.4);
   box-shadow: 
-    0 8px 20px rgba(74, 144, 226, 0.2), /* Much smaller shadows */
+    0 8px 20px rgba(74, 144, 226, 0.2),
     0 3px 10px rgba(74, 144, 226, 0.1);
 }
 
@@ -494,7 +494,7 @@ html {
 }
 
 .option-icon {
-  font-size: clamp(0.7rem, 1.3vw, 1rem) !important; /* Much smaller */
+  font-size: clamp(0.7rem, 1.3vw, 1rem) !important;
   min-width: clamp(18px, 3vw, 24px);
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
@@ -505,7 +505,7 @@ html {
 .option-item:hover .option-icon {
   color: #ffffff;
   filter: drop-shadow(0 4px 12px rgba(74, 144, 226, 0.8));
-  transform: scale(1.05) rotate(2deg); /* Much smaller rotation */
+  transform: scale(1.05) rotate(2deg);
 }
 
 .option-text {
@@ -514,7 +514,7 @@ html {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   flex: 1;
   text-align: left;
-  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important; /* Much smaller */
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
   line-height: 1.1;
   transition: all 0.4s ease;
@@ -523,7 +523,7 @@ html {
 .option-item:hover .option-text {
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(74, 144, 226, 0.8);
-  transform: translateX(1px); /* Much smaller movement */
+  transform: translateX(1px);
 }
 
 .minimize-hint {
@@ -550,7 +550,7 @@ html {
   backdrop-filter: blur(30px);
   border-radius: clamp(6px, 1.2vw, 10px);
   padding: clamp(1.2rem, 2.5vw, 2rem);
-  max-width: clamp(250px, 35vw, 350px) !important; /* Much smaller */
+  max-width: clamp(250px, 35vw, 350px) !important;
   width: 90%;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -562,7 +562,7 @@ html {
   backdrop-filter: blur(30px);
   border-radius: clamp(6px, 1.2vw, 10px);
   padding: clamp(1.2rem, 2.5vw, 2rem);
-  max-width: clamp(220px, 30vw, 300px) !important; /* Much smaller */
+  max-width: clamp(220px, 30vw, 300px) !important;
   width: 90%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
@@ -575,7 +575,7 @@ html {
   background: rgba(255, 255, 255, 0.2);
   border: none;
   border-radius: 50%;
-  width: clamp(22px, 4vw, 30px) !important; /* Much smaller */
+  width: clamp(22px, 4vw, 30px) !important;
   height: clamp(22px, 4vw, 30px) !important;
   color: white;
   font-size: clamp(0.8rem, 1.5vw, 1.1rem) !important;
@@ -594,7 +594,7 @@ html {
 /* Contact Form - MUCH SMALLER */
 .contact-title {
   color: white;
-  font-size: clamp(0.9rem, 1.8vw, 1.3rem) !important; /* Much smaller */
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem) !important;
   font-weight: 300;
   margin-bottom: clamp(0.8rem, 1.6vw, 1.2rem);
   text-align: center;
@@ -614,7 +614,7 @@ html {
   border-radius: clamp(3px, 0.6vw, 5px);
   padding: clamp(0.5rem, 1vw, 0.8rem);
   color: white;
-  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important; /* Much smaller */
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important;
   transition: all 0.3s ease;
 }
 
@@ -640,7 +640,7 @@ html {
   border: none;
   padding: clamp(0.5rem, 1vw, 0.8rem) clamp(0.8rem, 1.6vw, 1.2rem);
   border-radius: clamp(6px, 1.2vw, 10px);
-  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important; /* Much smaller */
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem) !important;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: clamp(0.4rem, 0.8vw, 0.6rem);
@@ -708,7 +708,7 @@ html {
   .options-panel {
     width: 100%;
     bottom: 0;
-    height: 30vh !important; /* Much smaller */
+    height: 30vh !important;
     top: auto;
     right: 0;
     max-width: none;
@@ -716,4 +716,231 @@ html {
     backdrop-filter: blur(30px);
     border-top: 2px solid rgba(255, 255, 255, 0.1);
     padding: clamp(0.8rem, 2vw, 1.2rem);
-    gap
+    gap: clamp(0.5rem, 1.5vw, 0.8rem);
+  }
+
+  .floating-info-panel {
+    width: calc(100% - 1rem);
+    max-width: none;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 0.5rem;
+  .floating-info-panel {
+    width: calc(100% - 1rem);
+    max-width: none;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 0.5rem;
+    height: 25vh !important;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(15, 15, 25, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    padding: clamp(0.6rem, 1.5vw, 0.9rem);
+    overflow-y: auto;
+  }
+
+  .globe-container {
+    width: 100%;
+    height: 45vh !important;
+    left: 0;
+    top: 25vh;
+  }
+
+  .center-instructions {
+    top: 47.5vh;
+  }
+
+  /* Mobile text scaling */
+  .main-title {
+    font-size: clamp(1.1rem, 4vw, 1.6rem) !important;
+  }
+
+  .title-accent {
+    font-size: clamp(0.8rem, 3vw, 1.2rem) !important;
+  }
+
+  .instruction-text {
+    font-size: clamp(0.6rem, 2.5vw, 0.8rem) !important;
+  }
+
+  .options-title {
+    font-size: clamp(0.7rem, 2.8vw, 1rem) !important;
+  }
+
+  .option-text {
+    font-size: clamp(0.5rem, 2.2vw, 0.7rem) !important;
+  }
+
+  /* Minimal hover effects */
+  .option-item:hover {
+    transform: scale(1.005) translateY(-0.5px);
+  }
+
+  .option-large:hover {
+    transform: scale(1.01) translateY(-1px);
+  }
+
+  .option-small:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 7px !important;
+  }
+
+  .floating-info-panel {
+    padding: clamp(0.5rem, 1.2vw, 0.7rem);
+    height: 22vh !important;
+  }
+
+  .options-panel {
+    height: 35vh !important;
+    padding: clamp(0.6rem, 1.5vw, 0.9rem);
+    gap: clamp(0.4rem, 1vw, 0.6rem);
+  }
+
+  .globe-container {
+    height: 43vh !important;
+    top: 22vh;
+  }
+
+  .center-instructions {
+    top: 44vh;
+  }
+
+  /* Very small screen text */
+  .main-title {
+    font-size: clamp(1rem, 5vw, 1.4rem) !important;
+  }
+
+  .title-accent {
+    font-size: clamp(0.7rem, 4vw, 1.1rem) !important;
+  }
+
+  .instruction-text {
+    font-size: clamp(0.55rem, 3vw, 0.75rem) !important;
+  }
+
+  .options-title {
+    font-size: clamp(0.6rem, 3.5vw, 0.9rem) !important;
+  }
+
+  .option-text {
+    font-size: clamp(0.45rem, 2.5vw, 0.65rem) !important;
+  }
+
+  /* No hover effects on small screens */
+  .option-item:hover {
+    transform: none;
+  }
+
+  .option-large:hover {
+    transform: none;
+  }
+
+  .option-small:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 360px) {
+  html {
+    font-size: 6px !important;
+  }
+
+  .main-title {
+    font-size: clamp(0.9rem, 6vw, 1.2rem) !important;
+  }
+
+  .title-accent {
+    font-size: clamp(0.6rem, 5vw, 0.9rem) !important;
+  }
+
+  .instruction-text {
+    font-size: clamp(0.5rem, 3.5vw, 0.7rem) !important;
+  }
+
+  .option-text {
+    font-size: clamp(0.4rem, 3vw, 0.6rem) !important;
+  }
+
+  .current-time {
+    font-size: clamp(0.7rem, 4vw, 1rem) !important;
+  }
+
+  .location-name {
+    font-size: clamp(0.5rem, 3.5vw, 0.8rem) !important;
+  }
+}
+
+/* Large Screens - Prevent oversizing */
+@media (min-width: 1400px) {
+  html {
+    font-size: 12px !important;
+  }
+
+  .floating-info-panel {
+    width: 200px !important;
+    max-width: 12vw;
+  }
+
+  .options-panel {
+    width: 200px !important;
+    max-width: 12vw;
+  }
+
+  /* Cap maximum sizes */
+  .main-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem) !important;
+  }
+
+  .title-accent {
+    font-size: clamp(1.2rem, 2vw, 1.9rem) !important;
+  }
+
+  .current-time {
+    font-size: clamp(1rem, 1.6vw, 1.4rem) !important;
+  }
+
+  .location-name {
+    font-size: clamp(0.8rem, 1.3vw, 1.1rem) !important;
+  }
+
+  .option-text {
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem) !important;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1920px) {
+  html {
+    font-size: 14px !important;
+  }
+
+  .floating-info-panel {
+    left: clamp(1.5rem, 3vw, 3rem);
+    width: clamp(180px, 10vw, 240px) !important;
+  }
+
+  .options-panel {
+    right: clamp(1.5rem, 3vw, 3rem);
+    width: clamp(180px, 10vw, 240px) !important;
+  }
+
+  /* Prevent huge text on ultra-wide */
+  .main-title {
+    font-size: clamp(1.8rem, 2.2vw, 2.6rem) !important;
+  }
+
+  .title-accent {
+    font-size: clamp(1.3rem, 1.8vw, 2rem) !important;
+  }
+
+  .option-text {
+    font-size: clamp(0.75rem, 1vw, 1rem) !important;
+  }
+}

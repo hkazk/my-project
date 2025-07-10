@@ -460,13 +460,8 @@ const SpinningGlobe = () => {
 
       <div className="floating-info-panel">
         <div className="info-header">
-          <div className="location-icon">📍</div>
-          <div className="location-details">
-            <h3 className="location-name">{t('globe.location')}</h3>
-            <p className="location-subtitle">{t('globe.locationSubtitle')}</p>
-          </div>
         </div>
-
+        
         <div className="time-section">
           <div className="current-time">{formatRuhpoldingTime()}</div>
           <div className="current-date">{formatRuhpoldingDate()}</div>

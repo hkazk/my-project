@@ -1,19 +1,17 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as THREE from 'three';
 import './SpinningGlobe.css';
 
 const SpinningGlobe = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const mountRef = useRef(null);
   const globeInstanceRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showOptions, setShowOptions] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  
-  // New state for weather and time
   const [currentTime, setCurrentTime] = useState(new Date());
   const [weather, setWeather] = useState({
     temp: '12°C',
@@ -31,22 +29,19 @@ const SpinningGlobe = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Simulate weather data and news/offers (in production, fetch from APIs)
+  // Simulate weather data with translations
   useEffect(() => {
-    // This would typically be an API call to get real weather for Ruhpolding
     const weatherConditions = [
-      { temp: '12°C', condition: 'Partly Cloudy', icon: '⛅', humidity: '68%', wind: '8 km/h' },
-      { temp: '15°C', condition: 'Sunny', icon: '☀️', humidity: '55%', wind: '12 km/h' },
-      { temp: '8°C', condition: 'Light Snow', icon: '🌨️', humidity: '85%', wind: '6 km/h' },
-      { temp: '18°C', condition: 'Clear Sky', icon: '🌤️', humidity: '45%', wind: '10 km/h' }
+      { temp: '12°C', condition: t('weather.partlyCloudy'), icon: '⛅', humidity: '68%', wind: '8 km/h' },
+      { temp: '15°C', condition: t('weather.sunny'), icon: '☀️', humidity: '55%', wind: '12 km/h' },
+      { temp: '8°C', condition: t('weather.lightSnow'), icon: '🌨️', humidity: '85%', wind: '6 km/h' },
+      { temp: '18°C', condition: t('weather.clearSky'), icon: '🌤️', humidity: '45%', wind: '10 km/h' }
     ];
-    
-    // Randomly select weather for demo (replace with real API)
     const randomWeather = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
     setWeather(randomWeather);
-  }, []);
+  }, [t]);
 
-  // Format time for Ruhpolding (Central European Time)
+  // Format time for Ruhpolding
   const formatRuhpoldingTime = () => {
     const options = {
       timeZone: 'Europe/Berlin',
@@ -67,133 +62,110 @@ const SpinningGlobe = () => {
     return currentTime.toLocaleDateString('en-GB', options);
   };
 
-  // Menu options - REMOVED individual colors to use cohesive CSS
+  // Menu options with translations
   const menuOptions = [
     {
       id: 'activities',
-      title: 'Available Activities',
+      title: t('menu.activities'),
       icon: '🏔️',
-      description: 'Explore mountain hiking, alpine lakes, and traditional Bavarian culture',
+      description: t('menu.activitiesDesc'),
       priority: 'high'
     },
     {
       id: 'stories',
-      title: 'Local Stories',
+      title: t('menu.stories'),
       icon: '📖',
-      description: 'Discover the rich history and legends of Ruhpolding',
+      description: t('menu.storiesDesc'),
       priority: 'low'
     },
     {
       id: 'video',
-      title: 'Discover Ruhpolding in Motion',
+      title: t('menu.video'),
       icon: '🎬',
-      description: 'Watch our immersive video journey through the region',
+      description: t('menu.videoDesc'),
       priority: 'high'
     },
     {
       id: 'accommodation',
-      title: 'Find Accommodation & Services',
+      title: t('menu.accommodation'),
       icon: '🏨',
-      description: 'Hotels, restaurants, and additional services',
+      description: t('menu.accommodationDesc'),
       priority: 'high'
     },
     {
       id: 'contact',
-      title: 'Contact Us',
+      title: t('menu.contact'),
       icon: '📞',
-      description: 'Get in touch for personalized recommendations',
+      description: t('menu.contactDesc'),
       priority: 'low'
     }
   ];
 
-  // Handle expand
-  const handleExpand = useCallback(() => {
-    setShowOptions(true);
-  }, []);
-
-  // Handle option selection with camera dive and navigation
+  // Handle option selection with camera dive transition
   const handleOptionSelect = useCallback((option) => {
-    if (!showOptions) {
-      setShowOptions(true);
+    if (option.id === 'contact') {
+      setShowContactForm(true);
     } else {
-      if (option.id === 'contact') {
-        setShowContactForm(true);
-      } else {
-        // Start camera dive transition
-        setIsTransitioning(true);
-        setShowOptions(false);
+      // Hide all UI elements during transition
+      const centerInstructions = document.querySelector('.center-instructions');
+      const floatingInfoPanel = document.querySelector('.floating-info-panel');
+      const optionsPanel = document.querySelector('.options-panel');
+      
+      if (centerInstructions) centerInstructions.style.display = 'none';
+      if (floatingInfoPanel) floatingInfoPanel.style.display = 'none';
+      if (optionsPanel) optionsPanel.style.display = 'none';
+      
+      // Start camera dive transition
+      const instance = globeInstanceRef.current;
+      if (instance && instance.camera && instance.scene) {
+        const startTime = Date.now();
+        const duration = 3000;
+        const startPosition = instance.camera.position.clone();
+        const targetPosition = new THREE.Vector3(0, 0, 0.8);
         
-        const instance = globeInstanceRef.current;
-        if (instance && instance.camera && instance.scene) {
-          const startTime = Date.now();
-          const duration = 3000; // 3 seconds
-          const startPosition = instance.camera.position.clone();
-          const targetPosition = new THREE.Vector3(0, 0, 1.5); // Dive close to Earth
+        const animateCameraDive = () => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
           
-          const animateCameraDive = () => {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Smooth easing function for cinematic feel
-            const easeInOutCubic = progress < 0.5 
-              ? 4 * progress * progress * progress 
-              : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-            
-            // Animate camera position
-            instance.camera.position.lerpVectors(startPosition, targetPosition, easeInOutCubic);
-            instance.camera.lookAt(0, 0, 0);
-            
-            // Add camera shake for impact
-            if (progress > 0.8) {
-              const shake = (1 - progress) * 0.1;
-              instance.camera.position.x += (Math.random() - 0.5) * shake;
-              instance.camera.position.y += (Math.random() - 0.5) * shake;
-            }
-            
-            // Speed up globe rotation during dive
-            if (instance.globe) {
-              instance.globe.rotation.y += 0.02 * (1 + progress * 2);
-            }
-            
-            if (progress < 1) {
-              requestAnimationFrame(animateCameraDive);
-            } else {
-              // Animation complete - navigate to new page
-              setTimeout(() => {
-                navigate(`/${option.id}`);
-              }, 500);
-            }
-          };
+          const easeInOutCubic = progress < 0.5 
+            ? 4 * progress * progress * progress 
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
           
-          animateCameraDive();
-        } else {
-          // Fallback if 3D instance not available
-          setTimeout(() => {
-            navigate(`/${option.id}`);
-          }, 1000);
-        }
+          instance.camera.position.lerpVectors(startPosition, targetPosition, easeInOutCubic);
+          instance.camera.lookAt(0, 0, 0);
+          
+          if (progress > 0.8) {
+            const shake = (1 - progress) * 0.15;
+            instance.camera.position.x += (Math.random() - 0.5) * shake;
+            instance.camera.position.y += (Math.random() - 0.5) * shake;
+          }
+          
+          if (instance.globe) {
+            instance.globe.rotation.y += 0.03 * (1 + progress * 3);
+          }
+          
+          if (instance.stars) {
+            instance.stars.rotation.y += 0.008 * (1 + progress * 4);
+            instance.stars.rotation.x += 0.005 * (1 + progress * 3);
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(animateCameraDive);
+          } else {
+            setTimeout(() => {
+              navigate(`/${option.id}`);
+            }, 500);
+          }
+        };
+        
+        animateCameraDive();
+      } else {
+        setTimeout(() => {
+          navigate(`/${option.id}`);
+        }, 1000);
       }
     }
-  }, [showOptions, navigate]);
-
-  // Handle click outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (showOptions && !event.target.closest('.options-panel') && !event.target.closest('canvas')) {
-        setShowOptions(false);
-      }
-    };
-
-    if (showOptions) {
-      setTimeout(() => {
-        document.addEventListener('click', handleClickOutside);
-      }, 100);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [showOptions]);
+  }, [navigate]);
 
   const createGlobe = useCallback(() => {
     if (!mountRef.current || globeInstanceRef.current) return;
@@ -230,14 +202,11 @@ const SpinningGlobe = () => {
       mountRef.current.innerHTML = '';
       mountRef.current.appendChild(globeInstance.renderer.domElement);
 
-      // Add click listener
-      globeInstance.renderer.domElement.addEventListener('click', handleExpand);
-
       // Create globe
       const globeGeometry = new THREE.SphereGeometry(2.2, 64, 64);
       const textureLoader = new THREE.TextureLoader();
       const earthTexture = textureLoader.load(
-        'https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/textures/planets/earth_atmos_2048.jpg',
+        'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg',
         () => setIsLoading(false),
         undefined,
         () => setIsLoading(false)
@@ -263,15 +232,15 @@ const SpinningGlobe = () => {
       const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
       globeInstance.scene.add(atmosphere);
 
-      // Create enhanced star field
+      // Create star field
       const starGeometry = new THREE.BufferGeometry();
-      const starCount = 1500;
+      const starCount = 5000;
       const positions = new Float32Array(starCount * 3);
       const colors = new Float32Array(starCount * 3);
       
       for (let i = 0; i < starCount; i++) {
         const i3 = i * 3;
-        const radius = 40 + Math.random() * 40;
+        const radius = 30 + Math.random() * 60;
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.random() * Math.PI;
         
@@ -279,23 +248,25 @@ const SpinningGlobe = () => {
         positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
         positions[i3 + 2] = radius * Math.cos(phi);
         
-        // Vary star colors
         const colorType = Math.random();
-        if (colorType < 0.3) {
-          // Blue stars
-          colors[i3] = 0.5 + Math.random() * 0.5;
-          colors[i3 + 1] = 0.7 + Math.random() * 0.3;
-          colors[i3 + 2] = 1.0;
-        } else if (colorType < 0.6) {
-          // Orange stars
-          colors[i3] = 1.0;
-          colors[i3 + 1] = 0.6 + Math.random() * 0.4;
-          colors[i3 + 2] = 0.3 + Math.random() * 0.3;
+        const brightness = 0.6 + Math.random() * 0.4;
+        
+        if (colorType < 0.25) {
+          colors[i3] = 0.8 * brightness;
+          colors[i3 + 1] = 0.9 * brightness;
+          colors[i3 + 2] = 1.0 * brightness;
+        } else if (colorType < 0.5) {
+          colors[i3] = 1.0 * brightness;
+          colors[i3 + 1] = 1.0 * brightness;
+          colors[i3 + 2] = 1.0 * brightness;
+        } else if (colorType < 0.75) {
+          colors[i3] = 1.0 * brightness;
+          colors[i3 + 1] = 0.9 * brightness;
+          colors[i3 + 2] = 0.6 * brightness;
         } else {
-          // White stars
-          colors[i3] = 1.0;
-          colors[i3 + 1] = 1.0;
-          colors[i3 + 2] = 1.0;
+          colors[i3] = 1.0 * brightness;
+          colors[i3 + 1] = 0.7 * brightness;
+          colors[i3 + 2] = 0.4 * brightness;
         }
       }
       
@@ -303,11 +274,12 @@ const SpinningGlobe = () => {
       starGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
       
       const starMaterial = new THREE.PointsMaterial({
-        size: 0.1,
+        size: 0.6,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.85,
         vertexColors: true,
-        blending: THREE.AdditiveBlending
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: false
       });
       
       const stars = new THREE.Points(starGeometry, starMaterial);
@@ -354,10 +326,10 @@ const SpinningGlobe = () => {
       globeInstance.ring = ring;
 
       // Add lighting
-      const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
       globeInstance.scene.add(ambientLight);
 
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
       directionalLight.position.set(5, 3, 5);
       globeInstance.scene.add(directionalLight);
 
@@ -367,25 +339,21 @@ const SpinningGlobe = () => {
 
         globeInstance.animationId = requestAnimationFrame(animate);
         
-        // Rotate globe
         if (globeInstance.globe) {
           globeInstance.globe.rotation.y += 0.005;
         }
 
-        // Rotate stars
         if (globeInstance.stars) {
           globeInstance.stars.rotation.x += 0.0002;
           globeInstance.stars.rotation.y += 0.0003;
           globeInstance.stars.rotation.z += 0.0001;
         }
 
-        // Animate marker
         if (globeInstance.marker) {
           const time = Date.now() * 0.005;
           globeInstance.marker.material.opacity = 0.7 + Math.sin(time) * 0.3;
         }
 
-        // Animate ring
         if (globeInstance.ring) {
           const time = Date.now() * 0.003;
           globeInstance.ring.scale.setScalar(1 + Math.sin(time) * 0.3);
@@ -418,7 +386,7 @@ const SpinningGlobe = () => {
       setError("Failed to create globe");
       setIsLoading(false);
     }
-  }, [handleExpand]);
+  }, []);
 
   const cleanupGlobe = useCallback(() => {
     if (!globeInstanceRef.current) return;
@@ -431,10 +399,6 @@ const SpinningGlobe = () => {
     
     if (instance.animationId) {
       cancelAnimationFrame(instance.animationId);
-    }
-    
-    if (instance.renderer && instance.renderer.domElement) {
-      instance.renderer.domElement.removeEventListener('click', handleExpand);
     }
     
     if (mountRef.current && instance.renderer && mountRef.current.contains(instance.renderer.domElement)) {
@@ -459,7 +423,7 @@ const SpinningGlobe = () => {
     }
     
     globeInstanceRef.current = null;
-  }, [handleExpand]);
+  }, []);
 
   useEffect(() => {
     createGlobe();
@@ -479,158 +443,101 @@ const SpinningGlobe = () => {
       {isLoading && (
         <div className="loading-overlay">
           <div className="loading-spinner"></div>
-          <div>Loading Spinning Globe...</div>
+          <div>{t('common.loading')} Spinning Globe...</div>
         </div>
       )}
 
-      {/* Redesigned Center Instructions - Much More Professional */}
-      {!showOptions && !isLoading && !isTransitioning && (
+      {!isLoading && (
         <div className="center-instructions">
-          <div className="explore-badge">✨ EXPLORE</div>
+          <div className="explore-badge">{t('globe.explore')}</div>
           <div className="main-title">
-            Ruhpolding
-            <span className="title-accent">Experience</span>
+            {t('globe.title')}
+            <span className="title-accent">{t('globe.subtitle')}</span>
           </div>
-          <div className="instruction-text">Click anywhere to begin your journey</div>
+          <div className="instruction-text">{t('globe.instruction')}</div>
         </div>
       )}
 
-      {/* Floating Info Panel */}
-      {!showOptions && !isTransitioning && (
-        <div className="floating-info-panel">
-          {/* Location Header */}
-          <div className="info-header">
-            <div className="location-icon">📍</div>
-            <div className="location-details">
-              <h3 className="location-name">Ruhpolding, Bavaria</h3>
-              <p className="location-subtitle">Alpine Paradise</p>
-            </div>
+      <div className="floating-info-panel">
+        <div className="info-header">
+          <div className="location-icon">📍</div>
+          <div className="location-details">
+            <h3 className="location-name">{t('globe.location')}</h3>
+            <p className="location-subtitle">{t('globe.locationSubtitle')}</p>
           </div>
+        </div>
 
-          {/* Time & Date */}
-          <div className="time-section">
-            <div className="current-time">{formatRuhpoldingTime()}</div>
-            <div className="current-date">{formatRuhpoldingDate()}</div>
-          </div>
+        <div className="time-section">
+          <div className="current-time">{formatRuhpoldingTime()}</div>
+          <div className="current-date">{formatRuhpoldingDate()}</div>
+        </div>
 
-          {/* Weather */}
-          <div className="weather-section">
-            <div className="weather-main">
-              <div className="weather-left">
-                <span className="weather-icon">{weather.icon}</span>
-                <div className="weather-details">
-                  <div className="weather-temp">{weather.temp}</div>
-                  <div className="weather-condition">{weather.condition}</div>
-                </div>
+        <div className="weather-section">
+          <div className="weather-main">
+            <div className="weather-left">
+              <span className="weather-icon">{weather.icon}</span>
+              <div className="weather-details">
+                <div className="weather-temp">{weather.temp}</div>
+                <div className="weather-condition">{weather.condition}</div>
               </div>
             </div>
-            
-            <div className="weather-stats">
-              <div className="weather-stat">💧 {weather.humidity}</div>
-              <div className="weather-stat">💨 {weather.wind}</div>
+          </div>
+          
+          <div className="weather-stats">
+            <div className="weather-stat">💧 {weather.humidity}</div>
+            <div className="weather-stat">💨 {weather.wind}</div>
+          </div>
+        </div>
+
+        <div className="featured-experience">
+          <div className="featured-label">{t('globe.featuredToday')}</div>
+          <div className="featured-title">{t('featured.alpineWinterHiking')}</div>
+          <div className="featured-description">
+            {t('featured.alpineWinterHikingDesc')}
+          </div>
+        </div>
+
+        <div className="news-offers-section">
+          <div className="section-label">{t('globe.latestNews')}</div>
+          
+          <div className="news-item">
+            <div className="news-badge">{t('news.new')}</div>
+            <div className="news-content">
+              <div className="news-title">{t('featured.springFestival')}</div>
+              <div className="news-description">{t('featured.springFestivalDesc')}</div>
             </div>
           </div>
 
-          {/* Featured Experience */}
-          <div className="featured-experience">
-            <div className="featured-label">⭐ Featured Today</div>
-            <div className="featured-title">Alpine Winter Hiking</div>
-            <div className="featured-description">
-              Experience magical snow-covered trails with expert local guides
-            </div>
-          </div>
-
-          {/* Latest News & Offers */}
-          <div className="news-offers-section">
-            <div className="section-label">📢 Latest News</div>
-            
-            <div className="news-item">
-              <div className="news-badge">NEW</div>
-              <div className="news-content">
-                <div className="news-title">Spring Festival 2025</div>
-                <div className="news-description">Traditional Bavarian celebration - March 15-17</div>
-              </div>
-            </div>
-
-            <div className="news-item">
-              <div className="news-badge special">OFFER</div>
-              <div className="news-content">
-                <div className="news-title">Early Bird Special</div>
-                <div className="news-description">Save 20% on guided tours booked this month</div>
-              </div>
+          <div className="news-item">
+            <div className="news-badge special">{t('news.offer')}</div>
+            <div className="news-content">
+              <div className="news-title">{t('featured.earlyBird')}</div>
+              <div className="news-description">{t('featured.earlyBirdDesc')}</div>
             </div>
           </div>
         </div>
-      )}
+      </div>
 
-      {/* Transition Overlay */}
-      {isTransitioning && (
-        <div className="transition-overlay">
-          <div className="transition-effects">
-            <div className="diving-text">
-              Entering {menuOptions.find(opt => showOptions && opt.id)?.title || 'Experience'}...
-            </div>
-            <div className="diving-subtext">Preparing your journey</div>
-          </div>
-        </div>
-      )}
+      <div ref={mountRef} className="globe-container" />
 
-      <div 
-        ref={mountRef} 
-        className={`globe-container ${showOptions ? 'globe-minimized' : ''}`}
-      />
-
-      {/* REMOVED - No longer showing duplicate text at bottom */}
-
-      {/* FIXED: Compact Options Panel - REMOVED inline styles */}
-      {!showOptions && !isTransitioning && (
-        <div className="compact-options-panel">
+      <div className="options-panel">
+        <div className="options-list">
           {menuOptions.map((option, index) => (
             <div
               key={option.id}
               onClick={() => handleOptionSelect(option)}
-              className={`compact-option-dot ${option.priority === 'high' ? 'dot-large' : 'dot-small'}`}
+              className={`option-item ${option.priority === 'high' ? 'option-large' : 'option-small'}`}
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
             >
-              {option.icon}
+              <div className="option-icon">{option.icon}</div>
+              <div className="option-text">{option.title}</div>
             </div>
           ))}
         </div>
-      )}
+      </div>
 
-      {/* FIXED: Options Panel - REMOVED inline styles */}
-      {showOptions && !isTransitioning && (
-        <div className="options-panel">
-          <h2 className="options-title">Discover Ruhpolding</h2>
-
-          <div className="options-list">
-            {menuOptions.map((option, index) => (
-              <div
-                key={option.id}
-                onClick={() => handleOptionSelect(option)}
-                className={`option-item ${option.priority === 'high' ? 'option-large' : 'option-small'}`}
-                style={{
-                  animationDelay: `${index * 0.1}s`
-                }}
-              >
-                <div className="option-icon">{option.icon}</div>
-                <div className="option-text">{option.title}</div>
-              </div>
-            ))}
-          </div>
-
-          <div 
-            className="minimize-hint"
-            onClick={() => setShowOptions(false)}
-          >
-            Click to minimize
-          </div>
-        </div>
-      )}
-
-      {/* Contact Form Modal */}
       {showContactForm && (
         <div className="modal-overlay">
           <div className="contact-modal">
@@ -641,13 +548,13 @@ const SpinningGlobe = () => {
               ×
             </button>
 
-            <h2 className="contact-title">📞 Contact Us</h2>
+            <h2 className="contact-title">{t('contact.title')}</h2>
 
             <form className="contact-form">
-              <input type="text" placeholder="Your Name" className="form-input" />
-              <input type="email" placeholder="Your Email" className="form-input" />
-              <textarea placeholder="Your Message" rows="4" className="form-textarea" />
-              <button type="submit" className="submit-button">Send Message</button>
+              <input type="text" placeholder={t('contact.name')} className="form-input" />
+              <input type="email" placeholder={t('contact.email')} className="form-input" />
+              <textarea placeholder={t('contact.message')} rows="4" className="form-textarea" />
+              <button type="submit" className="submit-button">{t('contact.send')}</button>
             </form>
           </div>
         </div>

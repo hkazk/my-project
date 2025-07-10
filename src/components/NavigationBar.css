@@ -42,7 +42,7 @@
 }
 
 .navbar-logo {
-  font-size: 1.8rem;
+  font-size: 2.8rem; /* Increased from 1.8rem */
   font-weight: 300;
   color: #ffffff;
   text-shadow: 0 2px 10px rgba(74, 144, 226, 0.5),
@@ -56,7 +56,7 @@
 }
 
 .logo-icon {
-  font-size: 1.5rem;
+  font-size: 2.2rem; /* Increased from 1.5rem */
   filter: drop-shadow(0 2px 4px rgba(74, 144, 226, 0.6));
 }
 
@@ -75,9 +75,10 @@
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem; /* Increased from 1.5rem for better spacing */
   margin: 0;
   padding: 0;
+  align-items: center; /* Ensure all items align properly */
 }
 
 .navbar-links li {
@@ -88,8 +89,8 @@
   text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
-  font-size: 1rem;
-  padding: 0.6rem 1.2rem;
+  font-size: 1.4rem; /* Increased from 1rem */
+  padding: 0.8rem 1.6rem; /* Increased padding */
   border-radius: 20px;
   transition: all 0.3s ease;
   position: relative;
@@ -97,6 +98,7 @@
   border: 1px solid transparent;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(156, 89, 182, 0.05) 100%);
+  display: inline-block; /* Ensure consistent display */
 }
 
 .navbar-links a::before {
@@ -132,8 +134,8 @@
 .navbar-info {
   color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
-  font-size: 0.9rem;
-  padding: 0.6rem 1rem;
+  font-size: 1.2rem; /* Increased from 0.9rem */
+  padding: 0.8rem 1.4rem; /* Increased padding */
   border-radius: 20px;
   transition: all 0.3s ease;
   position: relative;
@@ -144,7 +146,7 @@
   cursor: default;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 0.8rem;
+  display: inline-block; /* Ensure consistent display */
 }
 
 .navbar-info:hover {
@@ -153,6 +155,22 @@
   border: 1px solid rgba(74, 144, 226, 0.2);
   text-shadow: 0 1px 5px rgba(74, 144, 226, 0.4);
 }
+
+/* Special styling for Live Cam link */
+.navbar-info-link {
+  cursor: pointer !important;
+  text-decoration: none;
+}
+
+.navbar-info-link:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.12) 0%, rgba(156, 89, 182, 0.12) 100%);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  text-shadow: 0 1px 8px rgba(74, 144, 226, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
 .navbar-links a.active {
   color: #ffffff;
   background: linear-gradient(135deg, rgba(74, 144, 226, 0.2) 0%, rgba(156, 89, 182, 0.2) 100%);
@@ -163,6 +181,11 @@
 
 .navbar-links a.active::before {
   opacity: 1;
+}
+
+/* Language Toggle Button Integration */
+.navbar-links li:last-child {
+  margin-left: 0.5rem; /* Add slight spacing before language toggle */
 }
 
 /* Special styling for SpinningGlobe page */
@@ -185,24 +208,29 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 1.5rem;
   }
 
   .navbar-logo {
-    font-size: 1.6rem;
+    font-size: 2.2rem; /* Still larger than before */
   }
 
   .logo-icon {
-    font-size: 1.3rem;
+    font-size: 1.8rem; /* Still larger than before */
   }
 
   .navbar-links {
-    gap: 1rem;
+    gap: 1.2rem; /* Reduced gap for mobile */
   }
 
   .navbar-links a {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.2rem; /* Still larger than before */
+    padding: 0.7rem 1.3rem;
+  }
+
+  .navbar-info {
+    font-size: 1rem; /* Still larger than before */
+    padding: 0.7rem 1.2rem;
   }
 }
 
@@ -213,16 +241,35 @@
     padding: 1rem;
   }
 
+  .navbar-logo {
+    font-size: 2rem; /* Still readable on mobile */
+  }
+
+  .logo-icon {
+    font-size: 1.6rem;
+  }
+
   .navbar-links {
-    gap: 0.8rem;
+    gap: 0.8rem; /* Tighter spacing for small screens */
     justify-content: center;
     flex-wrap: wrap;
   }
 
   .navbar-links a {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1rem; /* Smaller padding for mobile */
+    font-size: 1rem; /* Smaller but readable font */
     min-width: 80px;
     text-align: center;
+  }
+
+  .navbar-info {
+    font-size: 0.9rem; /* Smaller but readable on mobile */
+    padding: 0.6rem 0.8rem;
+  }
+
+  /* Language toggle adjustments for mobile */
+  .navbar-links li:last-child {
+    margin-left: 0;
+    margin-top: 0.5rem;
   }
 }

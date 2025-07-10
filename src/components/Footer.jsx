@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './Footer.css';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-background-overlay"></div>
@@ -17,7 +20,7 @@ const Footer = () => {
               <span className="footer-logo-text">Ruhpolding</span>
             </div>
             <p className="footer-tagline">
-              Discover the authentic heart of the Bavarian Alps, where pristine nature meets rich cultural heritage.
+              {t('footer.tagline')}
             </p>
             <div className="footer-social">
               <a href="#" className="social-link" aria-label="Instagram">
@@ -37,46 +40,46 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="footer-section">
-            <h3 className="footer-section-title">Explore</h3>
+            <h3 className="footer-section-title">{t('footer.explore')}</h3>
             <ul className="footer-links">
-              <li><Link to="/activities">Mountain Activities</Link></li>
-              <li><Link to="/guided-tours">Expert Guides</Link></li>
-              <li><Link to="/museums">Cultural Heritage</Link></li>
-              <li><Link to="/cuisine">Local Cuisine</Link></li>
+              <li><Link to="/activities">{t('footer.mountainActivities')}</Link></li>
+              <li><Link to="/guided-tours">{t('footer.expertGuides')}</Link></li>
+              <li><Link to="/museums">{t('footer.culturalHeritage')}</Link></li>
+              <li><Link to="/cuisine">{t('footer.localCuisine')}</Link></li>
             </ul>
           </div>
 
           {/* Experience */}
           <div className="footer-section">
-            <h3 className="footer-section-title">Experience</h3>
+            <h3 className="footer-section-title">{t('footer.experience')}</h3>
             <ul className="footer-links">
-              <li><a href="#">Alpine Hiking</a></li>
-              <li><a href="#">Crystal Lakes</a></li>
-              <li><a href="#">Traditional Crafts</a></li>
-              <li><a href="#">Seasonal Events</a></li>
+              <li><a href="#">{t('footer.alpineHiking')}</a></li>
+              <li><a href="#">{t('footer.crystalLakes')}</a></li>
+              <li><a href="#">{t('footer.traditionalCrafts')}</a></li>
+              <li><a href="#">{t('footer.seasonalEvents')}</a></li>
             </ul>
           </div>
 
           {/* Visit Information */}
           <div className="footer-section">
-            <h3 className="footer-section-title">Visit</h3>
+            <h3 className="footer-section-title">{t('footer.visit')}</h3>
             <ul className="footer-links">
-              <li><a href="#">Getting Here</a></li>
-              <li><a href="#">Where to Stay</a></li>
-              <li><a href="#">Weather Guide</a></li>
-              <li><a href="#">Safety Tips</a></li>
+              <li><a href="#">{t('footer.gettingHere')}</a></li>
+              <li><a href="#">{t('footer.whereToStay')}</a></li>
+              <li><a href="#">{t('footer.weatherGuide')}</a></li>
+              <li><a href="#">{t('footer.safetyTips')}</a></li>
             </ul>
           </div>
 
           {/* Contact Information */}
           <div className="footer-section">
-            <h3 className="footer-section-title">Connect</h3>
+            <h3 className="footer-section-title">{t('footer.connect')}</h3>
             <div className="footer-contact">
               <div className="contact-item">
                 <span className="contact-icon">📍</span>
                 <div className="contact-details">
-                  <p>Ruhpolding Tourist Office</p>
-                  <p>83324 Ruhpolding, Bavaria</p>
+                  <p>{t('footer.address')}</p>
+                  <p>{t('footer.addressLine')}</p>
                 </div>
               </div>
               <div className="contact-item">
@@ -88,8 +91,8 @@ const Footer = () => {
               <div className="contact-item">
                 <span className="contact-icon">🕒</span>
                 <div className="contact-details">
-                  <p>Mon-Fri: 9:00-17:00</p>
-                  <p>Sat-Sun: 9:00-13:00</p>
+                  <p>{t('footer.hours')}</p>
+                  <p>{t('footer.weekendHours')}</p>
                 </div>
               </div>
             </div>
@@ -99,24 +102,24 @@ const Footer = () => {
         {/* Newsletter Section */}
         <div className="footer-newsletter">
           <div className="newsletter-content">
-            <h3 className="newsletter-title">Stay Connected with Ruhpolding</h3>
+            <h3 className="newsletter-title">{t('footer.newsletter.title')}</h3>
             <p className="newsletter-description">
-              Receive updates about seasonal activities, local events, and exclusive alpine experiences.
+              {t('footer.newsletter.description')}
             </p>
           </div>
           <div className="newsletter-form">
             <div className="input-group">
               <input 
                 type="email" 
-                placeholder="Enter your email address"
+                placeholder={t('footer.newsletter.placeholder')}
                 className="newsletter-input"
               />
               <button className="newsletter-button">
-                Subscribe
+                {t('footer.newsletter.button')}
               </button>
             </div>
             <p className="newsletter-privacy">
-              We respect your privacy. Unsubscribe at any time.
+              {t('footer.newsletter.privacy')}
             </p>
           </div>
         </div>
@@ -124,17 +127,17 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <div className="footer-bottom-left">
-            <p>&copy; 2025 Ruhpolding Tourism. All rights reserved.</p>
-            <p className="footer-location">Authentic Bavarian Alps Experience</p>
+            <p>{t('footer.copyright')}</p>
+            <p className="footer-location">{t('footer.taglineBottom')}</p>
           </div>
           <div className="footer-bottom-right">
-            <a href="#" className="footer-legal-link">Privacy Policy</a>
+            <a href="#" className="footer-legal-link">{t('footer.privacyPolicy')}</a>
             <span className="footer-separator">•</span>
-            <a href="#" className="footer-legal-link">Terms of Service</a>
+            <a href="#" className="footer-legal-link">{t('footer.termsOfService')}</a>
             <span className="footer-separator">•</span>
-            <a href="#" className="footer-legal-link">Cookie Policy</a>
+            <a href="#" className="footer-legal-link">{t('footer.cookiePolicy')}</a>
             <span className="footer-separator">•</span>
-            <a href="#" className="footer-legal-link">Accessibility</a>
+            <a href="#" className="footer-legal-link">{t('footer.accessibility')}</a>
           </div>
         </div>
       </div>

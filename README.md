@@ -9,22 +9,22 @@ A beautiful, interactive tourism website showcasing the Alpine region of Ruhpold
 - 🏔️ Guided tours and hiking experiences
 - 🍽️ Traditional Bavarian cuisine showcase
 - 🏛️ Virtual museum tours
-- 📱 Responsive design for all devices
+- 📱 Responsive design for Ipad and Computer which HR Managers are supposed to use
 
 ## Technologies Used
 
-- React.js
-- Three.js for 3D graphics
-- Google Maps API
-- CSS3 animations
-- Responsive design
+- React (Component structure, routing, hooks)
+- Three.js (3D rendering and interactions)
+- GLB/GLTF Models (3D assets for museum objects)
+- Google Maps API (Interactive tour mapping)
+- GSAP (Advanced animations and scroll effects)
+- React i18next (Multi-language support)
+- Claude.ai
+- Chatgpt
+- Blender
 
-## Live Demo
-
-Visit the live site: [Coming Soon]
-
-## Local Development
-
-```bash
 npm install
+- This is going to download all the needed dependencies
+
 npm start
+- This is going to create a local server

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, OrbitControls, useCursor } from "@react-three/drei";
 import { useAtom, atom } from "jotai";
@@ -666,12 +667,10 @@ const EmbeddedMenuWindow = ({ onClose }) => {
 // Main Cuisine Page Component
 const CuisinePage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
 
   const heroImage = coffeeImage; // Using the coffee.jpg image
-  const schnitzelImage = "https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-  const sausageImage = "https://images.unsplash.com/photo-1599921841143-678194e4b0d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-  const prezelImage = "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
   const restaurantImage = coffee1Image; // Using coffee1.jpg for restaurant section
 
   return (
@@ -682,21 +681,21 @@ const CuisinePage = () => {
       <section className="cuisine-hero" style={{backgroundImage: `url(${heroImage})`}}>
         <div className="cuisine-hero-overlay">
           <div className="cuisine-hero-content">
-            <h1>Traditional Bavarian Cuisine</h1>
-            <p>Experience the authentic flavors of Bavaria through time-honored recipes, hearty dishes, and warm Alpine hospitality that has nourished generations.</p>
+            <h1>{t('cuisine.hero.title')}</h1>
+            <p>{t('cuisine.hero.description')}</p>
             
             <div className="cuisine-hero-stats">
               <div className="cuisine-hero-stat">
                 <span className="number">300+</span>
-                <span className="label">Traditional Recipes</span>
+                <span className="label">{t('cuisine.hero.stats.recipes')}</span>
               </div>
               <div className="cuisine-hero-stat">
                 <span className="number">15</span>
-                <span className="label">Local Restaurants</span>
+                <span className="label">{t('cuisine.hero.stats.restaurants')}</span>
               </div>
               <div className="cuisine-hero-stat">
                 <span className="number">500</span>
-                <span className="label">Years of Tradition</span>
+                <span className="label">{t('cuisine.hero.stats.tradition')}</span>
               </div>
             </div>
           </div>
@@ -706,42 +705,42 @@ const CuisinePage = () => {
       {/* About Section */}
       <section className="about">
         <div className="container">
-          <h2>Café Chiemgau - A Culinary Tradition</h2>
-          <p>Located in the heart of Ruhpolding, Café Chiemgau has been serving authentic Bavarian cuisine since 1952. Our family-run establishment combines traditional Alpine recipes with warm hospitality, creating an unforgettable dining experience that celebrates the rich culinary heritage of the Chiemgau region.</p>
-          <p>From our famous homemade Apfelstrudel to hearty Schweinshaxe, every dish at Café Chiemgau tells the story of Bavaria. Our chefs use only the finest local ingredients, sourced from Alpine farms and traditional suppliers who have been part of our community for generations.</p>
+          <h2>{t('cuisine.about.title')}</h2>
+          <p>{t('cuisine.about.paragraph1')}</p>
+          <p>{t('cuisine.about.paragraph2')}</p>
         </div>
       </section>
 
       {/* Signature Dishes Section */}
       <section className="signature-dishes">
         <div className="container">
-          <h2>Signature Bavarian Dishes</h2>
+          <h2>{t('cuisine.dishes.title')}</h2>
           <div className="dishes-grid">
             <div className="dish-card">
               <img src={coffee3Image} alt="Café Chiemgau Schnitzel" />
               <div className="dish-content">
                 <div className="icon">🥩</div>
-                <h3>Wiener Schnitzel</h3>
-                <p>Tender veal cutlet, perfectly breaded and golden-fried, served with lingonberry sauce and crispy potatoes.</p>
-                <div className="price">€18.50</div>
+                <h3>{t('cuisine.dishes.schnitzel.title')}</h3>
+                <p>{t('cuisine.dishes.schnitzel.description')}</p>
+                <div className="price">{t('cuisine.dishes.schnitzel.price')}</div>
               </div>
             </div>
             <div className="dish-card">
               <img src={coffee4Image} alt="Café Chiemgau Sausages" />
               <div className="dish-content">
                 <div className="icon">🌭</div>
-                <h3>Weisswurst & Brezn</h3>
-                <p>Traditional Bavarian white sausage served with sweet mustard, fresh pretzel, and a wheat beer.</p>
-                <div className="price">€12.80</div>
+                <h3>{t('cuisine.dishes.weisswurst.title')}</h3>
+                <p>{t('cuisine.dishes.weisswurst.description')}</p>
+                <div className="price">{t('cuisine.dishes.weisswurst.price')}</div>
               </div>
             </div>
             <div className="dish-card">
               <img src={coffee2Image} alt="Café Chiemgau Atmosphere" />
               <div className="dish-content">
                 <div className="icon">🍖</div>
-                <h3>Schweinshaxe</h3>
-                <p>Roasted pork knuckle with crispy skin, served with sauerkraut, potato dumplings, and dark beer gravy.</p>
-                <div className="price">€24.90</div>
+                <h3>{t('cuisine.dishes.schweinshaxe.title')}</h3>
+                <p>{t('cuisine.dishes.schweinshaxe.description')}</p>
+                <div className="price">{t('cuisine.dishes.schweinshaxe.price')}</div>
               </div>
             </div>
           </div>
@@ -753,25 +752,25 @@ const CuisinePage = () => {
         <div className="container">
           <div className="restaurants-content">
             <div className="restaurants-text">
-              <span className="badge">Est. 1952</span>
-              <h2>Café Chiemgau Experience</h2>
-              <p>Step into Café Chiemgau and discover why we've been Ruhpolding's favorite dining destination for over 70 years. Our traditional Bavarian restaurant offers an authentic taste of Alpine culture, where every meal is a celebration of local flavors and warm hospitality.</p>
+              <span className="badge">{t('cuisine.restaurant.badge')}</span>
+              <h2>{t('cuisine.restaurant.title')}</h2>
+              <p>{t('cuisine.restaurant.description')}</p>
               <div className="restaurant-features">
                 <div className="restaurant-feature">
                   <span>🏠</span>
-                  <span>Family-Owned Since 1952</span>
+                  <span>{t('cuisine.restaurant.features.family')}</span>
                 </div>
                 <div className="restaurant-feature">
                   <span>🥘</span>
-                  <span>Grandmother's Original Recipes</span>
+                  <span>{t('cuisine.restaurant.features.recipes')}</span>
                 </div>
                 <div className="restaurant-feature">
                   <span>🍺</span>
-                  <span>Local Chiemgau Brewery Partner</span>
+                  <span>{t('cuisine.restaurant.features.brewery')}</span>
                 </div>
                 <div className="restaurant-feature">
                   <span>🌿</span>
-                  <span>Alpine Farm-Fresh Ingredients</span>
+                  <span>{t('cuisine.restaurant.features.ingredients')}</span>
                 </div>
               </div>
               
@@ -780,7 +779,7 @@ const CuisinePage = () => {
                 className="menu-button"
                 onClick={() => setShowMenu(true)}
               >
-                📖 Browse Café Chiemgau Menu
+                {t('cuisine.restaurant.menuButton')}
               </button>
             </div>
             <div className="restaurants-image">
@@ -793,27 +792,27 @@ const CuisinePage = () => {
       {/* Cooking Classes Section */}
       <section className="cooking-classes">
         <div className="container">
-          <h2>Café Chiemgau Culinary Workshops</h2>
+          <h2>{t('cuisine.classes.title')}</h2>
           <div className="classes-grid">
             <div className="class-card">
               <div className="class-icon">👨‍🍳</div>
-              <h3>Chef Franz's Schnitzel Class</h3>
-              <p>Learn the secrets of our famous Wiener Schnitzel with Chef Franz Huber himself.</p>
+              <h3>{t('cuisine.classes.schnitzel.title')}</h3>
+              <p>{t('cuisine.classes.schnitzel.description')}</p>
             </div>
             <div className="class-card">
               <div className="class-icon">🥨</div>
-              <h3>Traditional Pretzel Workshop</h3>
-              <p>Master the art of hand-twisting authentic Bavarian Brezn in our kitchen.</p>
+              <h3>{t('cuisine.classes.pretzel.title')}</h3>
+              <p>{t('cuisine.classes.pretzel.description')}</p>
             </div>
             <div className="class-card">
               <div className="class-icon">🍺</div>
-              <h3>Chiemgau Beer & Food Pairing</h3>
-              <p>Discover perfect pairings with local Chiemgau brewery selections.</p>
+              <h3>{t('cuisine.classes.pairing.title')}</h3>
+              <p>{t('cuisine.classes.pairing.description')}</p>
             </div>
             <div className="class-card">
               <div className="class-icon">🥧</div>
-              <h3>Oma's Apfelstrudel Secret</h3>
-              <p>Create our legendary apple strudel using Grandmother Huber's 1952 recipe.</p>
+              <h3>{t('cuisine.classes.strudel.title')}</h3>
+              <p>{t('cuisine.classes.strudel.description')}</p>
             </div>
           </div>
         </div>

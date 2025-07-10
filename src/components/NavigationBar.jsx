@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageToggle from './LanguageToggle';
 import './NavigationBar.css';
 
 const NavigationBar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +41,6 @@ const NavigationBar = () => {
   return (
     <nav className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`}>
       <Link to="/" className="navbar-logo">
-        <span className="logo-icon">🏔️</span>
         Ruhpolding
       </Link>
       <ul className="navbar-links">
@@ -47,20 +49,30 @@ const NavigationBar = () => {
             to="/" 
             className={isActiveLink('/') ? 'active' : ''}
           >
-            Explore
+            {t('navbar.explore')}
           </Link>
         </li>
         <li>
-          <span className="navbar-info">Weather</span>
+          <span className="navbar-info">{t('navbar.weather')}</span>
         </li>
         <li>
-          <span className="navbar-info">Events</span>
+          <span className="navbar-info">{t('navbar.events')}</span>
         </li>
         <li>
-          <span className="navbar-info">Gallery</span>
+          <span className="navbar-info">{t('navbar.gallery')}</span>
         </li>
         <li>
-          <span className="navbar-info">Live Cam</span>
+          <a 
+            href="https://www.bergfex.de/sommer/ruhpolding/webcams/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="navbar-info navbar-info-link"
+          >
+            {t('navbar.liveCam')}
+          </a>
+        </li>
+        <li>
+          <LanguageToggle />
         </li>
       </ul>
     </nav>

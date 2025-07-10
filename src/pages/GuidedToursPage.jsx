@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import NavigationBar from '../components/NavigationBar';
 import './GuidedToursPage.css';
 
@@ -24,53 +25,54 @@ import map6Image from '../assets/map6.jpg';
 
 const GuidedToursPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [hoveredMarker, setHoveredMarker] = useState(null);
   const mapRef = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [useCustomMap, setUseCustomMap] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Gallery images with descriptions
+  // Gallery images with descriptions - using translations
   const galleryImages = [
     {
       src: tour1Image,
-      title: "Historic Architecture",
-      description: "Discover centuries-old Bavarian buildings and traditional craftsmanship"
+      title: t('guidedTours.gallery.historic.title'),
+      description: t('guidedTours.gallery.historic.description')
     },
     {
       src: tour2Image,
-      title: "Alpine Landscapes",
-      description: "Breathtaking mountain vistas and pristine natural beauty"
+      title: t('guidedTours.gallery.alpine.title'),
+      description: t('guidedTours.gallery.alpine.description')
     },
     {
       src: tour3Image,
-      title: "Cultural Heritage",
-      description: "Experience authentic Bavarian traditions and local customs"
+      title: t('guidedTours.gallery.cultural.title'),
+      description: t('guidedTours.gallery.cultural.description')
     },
     {
       src: tour4Image,
-      title: "Nature Trails",
-      description: "Peaceful walks through pristine forests and meadows"
+      title: t('guidedTours.gallery.nature.title'),
+      description: t('guidedTours.gallery.nature.description')
     },
     {
       src: tour5Image,
-      title: "Mountain Adventures",
-      description: "Explore challenging peaks and scenic hiking routes"
+      title: t('guidedTours.gallery.mountain.title'),
+      description: t('guidedTours.gallery.mountain.description')
     },
     {
       src: tour6Image,
-      title: "Local Experiences",
-      description: "Connect with local communities and traditional ways of life"
+      title: t('guidedTours.gallery.local.title'),
+      description: t('guidedTours.gallery.local.description')
     },
     {
       src: tour7Image,
-      title: "Scenic Viewpoints",
-      description: "Capture stunning panoramic views from elevated lookouts"
+      title: t('guidedTours.gallery.scenic.title'),
+      description: t('guidedTours.gallery.scenic.description')
     },
     {
       src: tour8Image,
-      title: "Hidden Gems",
-      description: "Discover secret spots known only to local guides"
+      title: t('guidedTours.gallery.hidden.title'),
+      description: t('guidedTours.gallery.hidden.description')
     }
   ];
 
@@ -95,52 +97,52 @@ const GuidedToursPage = () => {
     setCurrentSlide(index);
   };
 
-  // Real tour stops in Ruhpolding with actual coordinates and corresponding images
+  // Real tour stops in Ruhpolding with actual coordinates and corresponding images - using translations
   const tourStops = [
     {
       id: 1,
-      name: "Ruhpolding Town Center",
-      description: "Start your journey at the historic market square with traditional Bavarian architecture and local shops.",
+      name: t('guidedTours.stops.townCenter.name'),
+      description: t('guidedTours.stops.townCenter.description'),
       coordinates: { lat: 47.7597, lng: 12.6454 },
       position: { top: '55%', left: '45%' },
       image: map1Image
     },
     {
       id: 2,
-      name: "Parish Church St. Georg",
-      description: "Visit the beautiful baroque church with its iconic onion dome and stunning mountain backdrop.",
+      name: t('guidedTours.stops.church.name'),
+      description: t('guidedTours.stops.church.description'),
       coordinates: { lat: 47.7615, lng: 12.6441 },
       position: { top: '45%', left: '42%' },
       image: map2Image
     },
     {
       id: 3,
-      name: "Rauschberg Cable Car",
-      description: "Take the cable car up to breathtaking alpine views over the Chiemgau region.",
+      name: t('guidedTours.stops.cableCar.name'),
+      description: t('guidedTours.stops.cableCar.description'),
       coordinates: { lat: 47.7511, lng: 12.6389 },
       position: { top: '70%', left: '35%' },
       image: map3Image
     },
     {
       id: 4,
-      name: "Maiergschwendt Trail",
-      description: "Hike through pristine alpine meadows with panoramic views of the Bavarian Alps.",
+      name: t('guidedTours.stops.trail.name'),
+      description: t('guidedTours.stops.trail.description'),
       coordinates: { lat: 47.7456, lng: 12.6702 },
       position: { top: '65%', left: '65%' },
       image: map4Image
     },
     {
       id: 5,
-      name: "Weitsee Lake",
-      description: "Discover this serene mountain lake perfect for reflection and photography.",
+      name: t('guidedTours.stops.lake.name'),
+      description: t('guidedTours.stops.lake.description'),
       coordinates: { lat: 47.7333, lng: 12.6556 },
       position: { top: '85%', left: '52%' },
       image: map5Image
     },
     {
       id: 6,
-      name: "Unternberg Summit",
-      description: "Reach the summit for spectacular 360-degree views of the surrounding peaks.",
+      name: t('guidedTours.stops.summit.name'),
+      description: t('guidedTours.stops.summit.description'),
       coordinates: { lat: 47.7289, lng: 12.6833 },
       position: { top: '80%', left: '72%' },
       image: map6Image
@@ -218,7 +220,7 @@ const GuidedToursPage = () => {
               </div>
               <p style="margin: 0 0 12px 0; color: #2e7d32; font-size: 14px; line-height: 1.5;">${stop.description}</p>
               <div style="font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 8px;">
-                <span style="color: #4caf50;">📍</span> Tour Stop ${stop.id} • Click photo to enlarge
+                <span style="color: #4caf50;">📍</span> ${t('guidedTours.stops.tourStop')} ${stop.id} • ${t('guidedTours.stops.clickPhoto')}
               </div>
             </div>
           `;
@@ -302,7 +304,7 @@ const GuidedToursPage = () => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [t, tourStops]);
 
   return (
     <div className="guided-tours-page">
@@ -312,21 +314,21 @@ const GuidedToursPage = () => {
       <section className="guided-tours-hero" style={{backgroundImage: `url(${tourHeroImage})`}}>
         <div className="guided-tours-hero-overlay">
           <div className="guided-tours-hero-content">
-            <h1>Expert Guided Tours</h1>
-            <p>Discover hidden gems and local secrets with our knowledgeable guides who bring the history and culture of Ruhpolding to life through personalized tours.</p>
+            <h1>{t('guidedTours.hero.title')}</h1>
+            <p>{t('guidedTours.hero.description')}</p>
             
             <div className="guided-tours-stats">
               <div className="guided-tours-stat">
                 <span className="number">15+</span>
-                <span className="label">Tour Routes</span>
+                <span className="label">{t('guidedTours.stats.tourRoutes')}</span>
               </div>
               <div className="guided-tours-stat">
                 <span className="number">5</span>
-                <span className="label">Expert Guides</span>
+                <span className="label">{t('guidedTours.stats.expertGuides')}</span>
               </div>
               <div className="guided-tours-stat">
                 <span className="number">3h</span>
-                <span className="label">Average Duration</span>
+                <span className="label">{t('guidedTours.stats.averageDuration')}</span>
               </div>
             </div>
           </div>
@@ -336,16 +338,16 @@ const GuidedToursPage = () => {
       {/* About Section */}
       <section className="guided-tours-about">
         <div className="guided-tours-container">
-          <h2>Breathe Deep, Walk Slow, Feel Renewed</h2>
-          <p>Trade screen time for mountain time and reconnect with what matters: fresh air, stunning views, and real human connection. Our guided hikes in Ruhpolding take your team through lush forests, alpine meadows, and tranquil valleys against the majestic backdrop of the Bavarian Alps.</p>
-          <p>Led by knowledgeable local guides, each hike is carefully designed to suit all fitness levels from relaxing nature walks to more challenging summit treks. Along the way, your group will experience quiet moments, shared laughter, and the powerful calm that only nature can offer.</p>
+          <h2>{t('guidedTours.about.title')}</h2>
+          <p>{t('guidedTours.about.paragraph1')}</p>
+          <p>{t('guidedTours.about.paragraph2')}</p>
         </div>
       </section>
 
       {/* Interactive Map Section - Google Maps or Custom Fallback */}
       <section className="guided-tours-map-section">
         <div className="guided-tours-container">
-          <h2>Interactive Tour Route</h2>
+          <h2>{t('guidedTours.map.title')}</h2>
           <div className="guided-tours-map-container">
             {useCustomMap ? (
               // Custom SVG Map Fallback
@@ -494,14 +496,14 @@ const GuidedToursPage = () => {
                 {!mapLoaded && (
                   <div className="guided-tours-map-loading">
                     <div className="guided-tours-loading-spinner"></div>
-                    <p>Loading interactive map...</p>
+                    <p>{t('guidedTours.map.loadingText')}</p>
                   </div>
                 )}
               </>
             )}
           </div>
           <div className="guided-tours-map-legend">
-            <h3>Tour Stops Legend</h3>
+            <h3>{t('guidedTours.map.legendTitle')}</h3>
             <div className="guided-tours-legend-items">
               {tourStops.map((stop) => (
                 <div key={stop.id} className="guided-tours-legend-item">
@@ -520,7 +522,7 @@ const GuidedToursPage = () => {
             color: '#388e3c',
             fontStyle: 'italic'
           }}>
-            {useCustomMap ? '🖱️ Hover over the numbered markers to explore each tour stop' : '🖱️ Click on the numbered markers to explore each tour stop'}
+            🖱️ {useCustomMap ? t('guidedTours.map.hoverHint') : t('guidedTours.map.clickHint')}
           </p>
         </div>
       </section>
@@ -528,7 +530,7 @@ const GuidedToursPage = () => {
       {/* Tour Gallery Slider Section */}
       <section className="guided-tours-gallery">
         <div className="guided-tours-container">
-          <h2>Tour Highlights Gallery</h2>
+          <h2>{t('guidedTours.gallery.title')}</h2>
           <div className="guided-tours-gallery-slider">
             <div className="guided-tours-slider-container">
               <div 
@@ -593,30 +595,30 @@ const GuidedToursPage = () => {
         <div className="guided-tours-container">
           <div className="guided-tours-routes-content">
             <div className="guided-tours-routes-text">
-              <span className="guided-tours-badge">Premium Experience</span>
-              <h2>Guided Nature Adventures</h2>
-              <p>These outdoor adventures are more than just a physical activity, they're a reset for the mind and a boost for team morale. Time spent in nature has been shown to relieve stress, improve mood, and foster meaningful conversations, making it the perfect addition to any corporate retreat or wellness itinerary.</p>
+              <span className="guided-tours-badge">{t('guidedTours.routes.badge')}</span>
+              <h2>{t('guidedTours.routes.title')}</h2>
+              <p>{t('guidedTours.routes.description')}</p>
               <div className="guided-tours-route-features">
                 <div className="guided-tours-route-feature">
                   <span>🥾</span>
-                  <span>Professional Local Guides</span>
+                  <span>{t('guidedTours.routes.features.guides')}</span>
                 </div>
                 <div className="guided-tours-route-feature">
                   <span>🏔️</span>
-                  <span>Scenic Alpine Routes</span>
+                  <span>{t('guidedTours.routes.features.routes')}</span>
                 </div>
                 <div className="guided-tours-route-feature">
                   <span>📸</span>
-                  <span>Photo Opportunities</span>
+                  <span>{t('guidedTours.routes.features.photos')}</span>
                 </div>
                 <div className="guided-tours-route-feature">
                   <span>🌿</span>
-                  <span>Wildlife & Flora Discovery</span>
+                  <span>{t('guidedTours.routes.features.wildlife')}</span>
                 </div>
               </div>
               
               <button className="guided-tours-book-btn">
-                Book Your Adventure
+                {t('guidedTours.routes.bookButton')}
               </button>
             </div>
             <div className="guided-tours-routes-image">
@@ -629,27 +631,27 @@ const GuidedToursPage = () => {
       {/* Tour Highlights Section */}
       <section className="guided-tours-highlights">
         <div className="guided-tours-container">
-          <h2>What Makes Our Tours Special</h2>
+          <h2>{t('guidedTours.highlights.title')}</h2>
           <div className="guided-tours-highlights-grid">
             <div className="guided-tours-highlight-card">
               <div className="guided-tours-highlight-icon">👥</div>
-              <h3>Small Groups</h3>
-              <p>Maximum 8 people per tour for personalized attention and intimate experiences.</p>
+              <h3>{t('guidedTours.highlights.smallGroups.title')}</h3>
+              <p>{t('guidedTours.highlights.smallGroups.description')}</p>
             </div>
             <div className="guided-tours-highlight-card">
               <div className="guided-tours-highlight-icon">🎓</div>
-              <h3>Expert Knowledge</h3>
-              <p>Local guides with deep knowledge of history, culture, and natural heritage.</p>
+              <h3>{t('guidedTours.highlights.expertise.title')}</h3>
+              <p>{t('guidedTours.highlights.expertise.description')}</p>
             </div>
             <div className="guided-tours-highlight-card">
               <div className="guided-tours-highlight-icon">🏆</div>
-              <h3>All Skill Levels</h3>
-              <p>Routes designed for everyone from beginners to experienced hikers.</p>
+              <h3>{t('guidedTours.highlights.allLevels.title')}</h3>
+              <p>{t('guidedTours.highlights.allLevels.description')}</p>
             </div>
             <div className="guided-tours-highlight-card">
               <div className="guided-tours-highlight-icon">🌟</div>
-              <h3>Hidden Gems</h3>
-              <p>Access to secret spots and viewpoints known only to locals.</p>
+              <h3>{t('guidedTours.highlights.hiddenGems.title')}</h3>
+              <p>{t('guidedTours.highlights.hiddenGems.description')}</p>
             </div>
           </div>
         </div>
